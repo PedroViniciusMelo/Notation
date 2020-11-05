@@ -1,6 +1,6 @@
 import {LinearGradient} from 'expo-linear-gradient';
 import React from 'react';
-import Logo from '../Logo';
+import Logo from '../Logo/Index';
 
 export default function Index(){
     return(

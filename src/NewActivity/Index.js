@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, Text, TextInput, TouchableOpacity, Switch} from "react-native";
-import Barra from "../BarraSuperior";
+import Barra from "../BarraSuperior/Index";
 import Estilos from './Styles';
 
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import {View, FlatList, Text} from "react-native";
 import Estilos from './Styles';
-import BarraSuperior from '../BarraSuperior';
-import Logo from "../Logo";
+import BarraSuperior from '../BarraSuperior/Index';
+import Logo from "../Logo/Index";
 
 const pessoas = [
     {id: '01', desc: 'Pedro Silva'},

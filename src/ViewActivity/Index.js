@@ -1,5 +1,5 @@
 import React from 'react';
-import BarraSuperior from '../BarraSuperior';
+import BarraSuperior from '../BarraSuperior/Index';
 import {View, TouchableOpacity, Text} from 'react-native';
 import {Feather} from '@expo/vector-icons';
 import Estilos from './Style';
