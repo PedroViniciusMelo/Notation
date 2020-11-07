@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, Text, TextInput, TouchableOpacity, Switch} from "react-native";
-import Barra from "../BarraSuperior/Index";
+import BarraSuperior from "../../Recursos/BarraSuperior/Index";
 import Estilos from './Styles';
 
 
@@ -11,7 +11,7 @@ export default function Cadastro(){
 
     return(
         <View style={Estilos.mainView}>
-            <Barra conteudo='Nova tarefa' valor='false'/>
+            <BarraSuperior conteudo='Nova tarefa' valor='false'/>
             <View style={Estilos.secondaryView}>
                 <Text style={Estilos.titulos}>Título da tarefa</Text>
                 <TextInput style={Estilos.campos} value={titulo} onSubmitEditing={text=>setNome(text)}/>

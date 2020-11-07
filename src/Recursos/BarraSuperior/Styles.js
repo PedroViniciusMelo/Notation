@@ -2,7 +2,8 @@ import  {StyleSheet} from "react-native";
 
 export default StyleSheet.create({
     secondaryView:{
-        justifyContent: 'center',
+        padding: 20,
+        justifyContent: 'space-between',
         alignItems : 'center',
         backgroundColor : '#006EFF',
         height: '12%',
@@ -10,17 +11,14 @@ export default StyleSheet.create({
         flexDirection : 'row',
     },
     barra: {
-        position: 'absolute',
-        left : 20
+        position: 'relative',
     },
     text: {
-        fontWeight: 'bold',
+        fontFamily: 'Poppins_600SemiBold',
         color: 'white',
         fontSize: 30
     },
     categorias: {
-        position: 'absolute',
-        right: 20,
-        justifyContent: 'flex-end'
+        position: 'relative'
     }
 });

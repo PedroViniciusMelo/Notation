@@ -1,8 +1,8 @@
 import React from 'react';
 import {View, FlatList, Text} from "react-native";
 import Estilos from './Styles';
-import BarraSuperior from '../BarraSuperior/Index';
-import Logo from "../Logo/Index";
+import BarraSuperior from '../../Recursos/BarraSuperior/Index';
+import Logo from "../../Recursos/Logo/Index";
 
 const pessoas = [
     {id: '01', desc: 'Pedro Silva'},
@@ -15,7 +15,7 @@ const pessoas = [
 export default function HomeScreen (){
     return(
         <View style={Estilos.view}>
-            <BarraSuperior valor='true' conteudo='Sobre o APP'/>
+            <BarraSuperior valor='false' conteudo='Sobre o APP'/>
             <View style={Estilos.secondaryView}>
                 <View style={{padding : 10}}/>
                 <Logo/>
