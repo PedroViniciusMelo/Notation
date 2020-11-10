@@ -1,32 +1,30 @@
 import  {StyleSheet} from "react-native";
+import normalizador from "../../Recursos/normalizador";
 
 export default StyleSheet.create({
     view: {
-        flex : 1,
-        paddingTop: 20,
-
+        flex : 1
     },
     secondaryView:{
+        position: 'relative',
+        padding: '2%',
         alignItems : 'center',
-        flex: 1,
-    },
-    barra: {
-        position: 'absolute',
-        left : 20
+        width: '100%',
+        height: '100%'
     },
     text: {
-        paddingTop: 10,
-        fontWeight: 'bold',
+        paddingTop: '1%',
+        fontFamily: 'Poppins_700Bold',
         color: 'black',
-        fontSize: 40
+        fontSize: normalizador('width', '6%')
     },
     flatlist: {
         alignItems: 'center',
-        padding : 15,
+        padding : '3%',
     },
     nomes: {
         color: 'black',
-        fontSize:  25,
+        fontSize: normalizador('width', '4%'),
     },
     flatListSize: {
         height : '23%',
@@ -37,21 +35,21 @@ export default StyleSheet.create({
         borderRadius: 30
     },
     quadrado : {
-        height : 100,
-        width : 100,
+        justifyContent: 'center',
+        alignItems: 'center',
+        height : normalizador('width', '20%'),
+        width : normalizador('width', '20%'),
         backgroundColor : 'black',
-        top: 90
     },
     textoQuadrado : {
         color : 'white',
         fontWeight : 'bold',
-        fontSize : 20,
-        top: 10
+        fontSize : normalizador('width', '3.5%'),
     },
     direitos : {
-        top : 170,
+        top: '10%',
         color : 'black',
         fontWeight : 'bold',
-        fontSize: 25
+        fontSize: normalizador('width', '4%')
     }
 });

@@ -17,7 +17,6 @@ export default function HomeScreen (){
         <View style={Estilos.view}>
             <BarraSuperior valor='false' conteudo='Sobre o APP'/>
             <View style={Estilos.secondaryView}>
-                <View style={{padding : 10}}/>
                 <Logo/>
                 <Text style={Estilos.text}>Desenvolvido</Text>
                 <View style={Estilos.flatListSize}>
@@ -25,9 +24,7 @@ export default function HomeScreen (){
                         style={Estilos.flatLista}
                         data={pessoas}
                         keyExtractor={item => item.id}
-                        renderItem={({item})=><View style={Estilos.flatlist}><Text style={Estilos.nomes}>{item.desc}</Text></View>}
-                    >
-                    </FlatList>
+                        renderItem={({item})=><View style={Estilos.flatlist}><Text style={Estilos.nomes}>{item.desc}</Text></View>}/>
                 </View>
                 <Text style={Estilos.text}>Contato</Text>
                 <Text style={Estilos.nomes}>email@mail.com</Text>

@@ -1,4 +1,5 @@
 import  {StyleSheet} from "react-native";
+import normalizador from "../normalizador";
 
 export default StyleSheet.create({
     secondaryView:{
@@ -16,7 +17,7 @@ export default StyleSheet.create({
     text: {
         fontFamily: 'Poppins_600SemiBold',
         color: 'white',
-        fontSize: 30
+        fontSize: normalizador('width', '5%')
     },
     categorias: {
         position: 'relative'
