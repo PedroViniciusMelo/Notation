@@ -8,6 +8,9 @@ export default StyleSheet.create({
         fontSize : normalizador('width', '2%')
     },
     data: {
+        padding: 10,
+        flexDirection: 'row',
+        position: 'relative',
         backgroundColor: 'gold',
         width: '50%',
         height: '8%',
