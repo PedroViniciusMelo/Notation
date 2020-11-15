@@ -1,13 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import BarraSuperior from '../../Recursos/BarraSuperior/Index'
-import {View, TouchableOpacity, FlatList} from "react-native";
+import {View, TouchableOpacity, FlatList, Text} from "react-native";
 import {Feather} from "@expo/vector-icons";
 import ContainerAtividade from '../../Recursos/ContainerAtividade/Index';
 import Estilos from './Style';
+import Atividades from '../../Services/sqlite/Atividades';
 
-const atividades = [{id: '01', titulo: 'Fazer a tarefa de IA', categoria: 'Universidade', data: '10/02/2020'}]
+
 
 export default function home(){
+    const [atividades, setAtividades] = useState([])
+    console.log(Atividades.all())
+    
     return(
         <View style={Estilos.container}>
             <BarraSuperior conteudo='Atividades' valor='false'/>

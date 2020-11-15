@@ -3,16 +3,23 @@ import normalizador from "../../Recursos/normalizador";
 
 
 export default StyleSheet.create({
+    textoData: {
+        fontWeight: 'bold',
+        fontSize: normalizador('width', '3%'),
+        color: 'white'
+    },
     descricao : {
         fontFamily: 'Poppins_400Regular',
         fontSize : normalizador('width', '2%')
     },
     data: {
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
         padding: 10,
         flexDirection: 'row',
         position: 'relative',
-        backgroundColor: 'gold',
-        width: '50%',
+        backgroundColor: 'blue',
+        width: '60%',
         height: '8%',
         borderRadius: 20
     },
