@@ -16,7 +16,7 @@ export default StyleSheet.create({
         paddingTop: '1%',
         fontFamily: 'Poppins_700Bold',
         color: 'black',
-        fontSize: normalizador('width', '6%')
+        fontSize: normalizador.widthPercentageToDP('6%')
     },
     flatlist: {
         alignItems: 'center',
@@ -24,7 +24,7 @@ export default StyleSheet.create({
     },
     nomes: {
         color: 'black',
-        fontSize: normalizador('width', '4%'),
+        fontSize: normalizador.widthPercentageToDP('4%'),
     },
     flatListSize: {
         height : '23%',
@@ -37,19 +37,19 @@ export default StyleSheet.create({
     quadrado : {
         justifyContent: 'center',
         alignItems: 'center',
-        height : normalizador('width', '20%'),
-        width : normalizador('width', '20%'),
+        height : normalizador.widthPercentageToDP('20%'),
+        width : normalizador.widthPercentageToDP('20%'),
         backgroundColor : 'black',
     },
     textoQuadrado : {
         color : 'white',
         fontWeight : 'bold',
-        fontSize : normalizador('width', '3.5%'),
+        fontSize : normalizador.widthPercentageToDP('3.5%'),
     },
     direitos : {
         top: '10%',
         color : 'black',
         fontWeight : 'bold',
-        fontSize: normalizador('width', '4%')
+        fontSize: normalizador.widthPercentageToDP('4%')
     }
 });

@@ -9,18 +9,20 @@ import Atividades from "../../Telas/Atividades/Index";
 import NovaAtividade from "../../Telas/NovaAtividade/Index";
 import SobreApp  from "../../Telas/SobreApp/Index";
 import VisualizarTarefa from "../../Telas/VisualizarTarefa/Index";
+import StackNavigator from '../StackNavigator/Index';
 
 export default function Drawer(){
     const SideBar = createDrawerNavigator();
     return (
         <SideBar.Navigator drawerContent={(props) => <CustomDrawerNavigator {...props}/>}>
+            <SideBar.Screen name={'main'} component={StackNavigator}/>
             <SideBar.Screen name={'Atividades'} component={AtividadesF}/>
             <SideBar.Screen name={'Calendário'} component={Cadastro}/>
             <SideBar.Screen name={'Histórico'} component={Principal}/>
             <SideBar.Screen name={'Sobre o App'} component={SobreAppF}/>
         </SideBar.Navigator>
     )
-
+    //Rotas das aplicações
     function AtividadesF(){
         return(
             <Atividades/>

@@ -8,11 +8,11 @@ db.transaction((tx) => {
   
   //tx.executeSql("DROP TABLE atividades;"); //Deleta a tabela
   tx.executeSql(
-    "CREATE TABLE IF NOT EXISTS atividades (id INTEGER PRIMARY KEY AUTOINCREMENT, titulo TEXT, categoria TEXT, descricao TEXT, data TEXT, notificar TEXT, atrasado TEXT, concluida TXT);"
+    "CREATE TABLE IF NOT EXISTS atividades (id INTEGER PRIMARY KEY AUTOINCREMENT, titulo TEXT, categoria TEXT, descricao TEXT, data TEXT, notificar TEXT, atrasado TEXT, concluida TXT);" //Cria a tabela se ela não existir
   );
 });
 
-
+//Criar o objeto, o resultado é uma promise
 const create = (obj) => {
   return new Promise((resolve, reject) => {
     db.transaction((tx) => {
@@ -31,7 +31,7 @@ const create = (obj) => {
   });
 };
 
-
+//Remove o objeto com base na busca pelo ID, o resultado é uma promise
 const remove = (id) => {
   return new Promise((resolve, reject) => {
     db.transaction((tx) => {
@@ -48,7 +48,7 @@ const remove = (id) => {
     });
   });
 };
-
+//Retorna todos os objetos da Tabela, o resultado é uma promise
 const all = () => {
   return new Promise((resolve, reject) => {
     db.transaction((tx) => {
@@ -64,7 +64,7 @@ const all = () => {
   });
 };
 
-
+//Faz o update de um objeto com base na busca pelo ID, o segundo parâmetro faz referência aos dados a serem atualizados. O resultado é uma promise
 const update = (id, obj) => {
   return new Promise((resolve, reject) => {
     db.transaction((tx) => {
@@ -83,7 +83,7 @@ const update = (id, obj) => {
   });
 };
 
-
+//Faz a busca um item com base no ID, o resultado é uma Promise
 const find = (id) => {
   return new Promise((resolve, reject) => {
     db.transaction((tx) => {

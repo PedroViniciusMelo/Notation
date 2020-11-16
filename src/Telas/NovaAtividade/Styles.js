@@ -5,12 +5,12 @@ import normalizador from "../../Recursos/normalizador";
 export default StyleSheet.create({
     textoData: {
         fontWeight: 'bold',
-        fontSize: normalizador('width', '3%'),
+        fontSize: normalizador.widthPercentageToDP('3%'),
         color: 'white'
     },
     descricao : {
         fontFamily: 'Poppins_400Regular',
-        fontSize : normalizador('width', '2%')
+        fontSize : normalizador.widthPercentageToDP('2%')
     },
     data: {
         alignItems: 'center',
@@ -26,7 +26,7 @@ export default StyleSheet.create({
     textBtn: {
         color: '#FFF',
         fontFamily: 'Poppins_600SemiBold',
-        fontSize: normalizador('width', '4%')
+        fontSize: normalizador.widthPercentageToDP('4%')
     },
     Btn: {
         top: '7%',
@@ -60,7 +60,7 @@ export default StyleSheet.create({
     },
     titulos: {
         fontFamily: 'Poppins_700Bold',
-        fontSize: normalizador('width', '4%'),
+        fontSize: normalizador.widthPercentageToDP('4%'),
         color: 'black',
     },
     campos: {
@@ -75,6 +75,6 @@ export default StyleSheet.create({
         alignItems: 'center'
     },
     notificar: {
-        fontSize: normalizador('width', '3%')
+        fontSize: normalizador.widthPercentageToDP('3%')
     }
 })

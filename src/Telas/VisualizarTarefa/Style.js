@@ -39,12 +39,12 @@ export default StyleSheet.create({
         left : 13,
         fontFamily: 'Poppins_700Bold',
         color: 'white',
-        fontSize: normalizador('width', '3%')
+        fontSize: normalizador.widthPercentageToDP('3%')
     },
     txtBtn2:{
         left : 13,
         fontFamily: 'Poppins_700Bold',
         color: 'white',
-        fontSize: normalizador('width', '3%')
+        fontSize: normalizador.widthPercentageToDP('3%')
     }
 })

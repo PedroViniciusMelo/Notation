@@ -17,7 +17,7 @@ export default StyleSheet.create({
     text: {
         fontFamily: 'Poppins_600SemiBold',
         color: 'white',
-        fontSize: normalizador('width', '5%')
+        fontSize: normalizador.widthPercentageToDP('5%')
     },
     categorias: {
         position: 'relative'

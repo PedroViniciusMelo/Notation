@@ -15,7 +15,7 @@ export default StyleSheet.create({
         borderRadius: 20
     },
     tamanhoLogo: {
-        width: normalizador('width','40%'),
-        height: normalizador('height','30%')
+        width: normalizador.widthPercentageToDP('40%'),
+        height: normalizador.heightPercentageToDP('30%')
     }
 });

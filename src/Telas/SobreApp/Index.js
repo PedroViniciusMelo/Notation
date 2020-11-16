@@ -4,6 +4,7 @@ import Estilos from './Styles';
 import BarraSuperior from '../../Recursos/BarraSuperior/Index';
 import Logo from "../../Recursos/Logo/Index";
 
+//Variável contendo a lista de desenvolvedores
 const pessoas = [
     {id: '01', desc: 'Pedro Silva'},
     {id: '02', desc: 'José Pereira'},
@@ -15,7 +16,7 @@ const pessoas = [
 export default function HomeScreen (){
     return(
         <View style={Estilos.view}>
-            <BarraSuperior valor='false' conteudo='Sobre o APP'/>
+            <BarraSuperior valor={false} conteudo='Sobre o APP'/>
             <View style={Estilos.secondaryView}>
                 <Logo/>
                 <Text style={Estilos.text}>Desenvolvido</Text>

@@ -5,7 +5,8 @@ import Estilos from './Styles';
 import Atividades from '../../Services/sqlite/Atividades';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import {Feather} from '@expo/vector-icons';
-import normalizador from '../../Recursos/normalizador'
+import normalizador from '../../Recursos/normalizador';
+import {useNavigation} from '@react-navigation/native';
 
 export default function Cadastro(){
     //Define os dados do CRUD
@@ -19,21 +20,27 @@ export default function Cadastro(){
     const [mode, setMode] = useState('date');
     const [show, setShow] = useState(false);
 
+    const Navigation = useNavigation()
+
+    function NavigateToAtividades(){
+        Navigation.navigate('Atividades')
+    }
+
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate || date;
         setShow(Platform.OS === 'ios');
         setDate(currentDate);
     };
-
+    // Muda setShow para true o que faz com que DateTimePicker apareça na tela.
     const showMode = (currentMode) => {
         setShow(true);
         setMode(currentMode);
     };
-
+    //Altera o modo de exibição para DatePicker
     const showDatepicker = () => {
         showMode('date');
     };
-
+    //Altera o modo de exibição para TimePicker
     const showTimepicker = () => {
         showMode('time');
     };
@@ -43,10 +50,10 @@ export default function Cadastro(){
         let mes = date.getMonth();
         let ano = date.getFullYear();
 
-        if (dia.toString().length == 1){
+        if (dia.toString().length === 1){
             dia = '0'+ dia
         }
-        if (mes.toString().length == 1){
+        if (mes.toString().length === 1){
             mes = '0'+ (mes + 1)
         }
         return dia + '/'+ mes + '/' + ano
@@ -55,11 +62,11 @@ export default function Cadastro(){
     const formatTime = () =>{
         let hora = date.getHours()
         let minutos = date.getMinutes()
-        
-        if (hora.toString().length == 1){
+
+        if (hora.toString().length === 1){
             hora = '0'+ hora
         }
-        if (minutos.toString().length == 1){
+        if (minutos.toString().length === 1){
             minutos = '0'+ minutos
         }
         return hora + ':'+ minutos
@@ -74,6 +81,7 @@ export default function Cadastro(){
     }
     //Passa os dados para o CRUD
     const save = () => {
+        //Verifica se nenhum dos campos obrigatórios estão vazios, se não, é passado os dados para o banco de dados e o usuário é retornardo para a tela de Atividades. Se algum campo estiver vazio, será retornado um Alert
         if(titulo === '' || titulo === " "){
             return alert('Digite o Titulo')
         }else if(categoria === '' || categoria === " "){
@@ -84,12 +92,13 @@ export default function Cadastro(){
             .catch(err => console.log(err))
             alert('Adicionado com sucesso!')
             reset()
+            NavigateToAtividades()
         }
     }
 
     return(
         <View style={Estilos.mainView}>
-            <BarraSuperior conteudo='Nova tarefa' valor='false'/>
+            <BarraSuperior conteudo='Nova tarefa' valor={false}/>
             <View style={Estilos.secondaryView}>
                 <Text style={Estilos.titulos}>Título da tarefa</Text>
                 <TextInput style={Estilos.campos} value={titulo} onChangeText={text=>setTitulo(text)}/>
@@ -99,11 +108,11 @@ export default function Cadastro(){
                 <TextInput style={Estilos.textoInput} value={descricao} onChangeText={text => setDescricao(text)}/>
                 <Text style={Estilos.titulos}>Data</Text>
                 <View style={Estilos.data}>
-                    <Feather name='calendar' color='gold' size={normalizador('width', '4%')}/>
+                    <Feather name='calendar' color='gold' size={normalizador.widthPercentageToDP('4%')}/>
                     <TouchableOpacity onPress={showDatepicker}>
                         <Text style={Estilos.textoData}>{formatData()}</Text>
                     </TouchableOpacity>
-                    <Feather name='clock' color='gold' size={normalizador('width', '4%')}/>
+                    <Feather name='clock' color='gold' size={normalizador.widthPercentageToDP('4%')}/>
                     <TouchableOpacity onPress={showTimepicker}>
                         <Text style={Estilos.textoData}>{formatTime()}</Text>
                     </TouchableOpacity>

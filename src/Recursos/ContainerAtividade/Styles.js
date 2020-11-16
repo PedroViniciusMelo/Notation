@@ -19,7 +19,7 @@ export default StyleSheet.create({
         paddingLeft: '3%',
         paddingTop: '1%',
         fontFamily: 'Poppins_700Bold',
-        fontSize: normalizador('width','5%')
+        fontSize: normalizador.widthPercentageToDP('5%')
     },
     containerS: {
         flexDirection: 'row',
@@ -39,7 +39,7 @@ export default StyleSheet.create({
         backgroundColor: 'green'
     },
     textoCategoria: {
-        fontSize: normalizador('width','2.5%'),
+        fontSize: normalizador.widthPercentageToDP('2.5%'),
         fontFamily: 'Poppins_700Bold',
         color: '#FFF'
     },
@@ -52,6 +52,6 @@ export default StyleSheet.create({
     },
     textoData: {
         fontFamily: 'Poppins_700Bold',
-        fontSize: normalizador('width','3%'),
+        fontSize: normalizador.widthPercentageToDP('3%'),
     }
 })

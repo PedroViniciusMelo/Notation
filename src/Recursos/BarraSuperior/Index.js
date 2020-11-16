@@ -1,27 +1,18 @@
 import React from 'react';
-import {Text, View} from "react-native";
+import {Text, View, TouchableOpacity} from "react-native";
 import Estilos from "./Styles";
 import Barra from "../../../assets/Barra/Barra.svg";
 import Categorias from "../../../assets/Barra/Categorias.svg";
 
 
-
-export default function (props){
-    if (props.valor === 'false'){
-        return(
-        <View style={Estilos.secondaryView}>
+export default function (props, {navigation}){
+    return(
+    <View style={Estilos.secondaryView}>
+        <TouchableOpacity onPress={() => navigation.openDrawer()}>
             <Barra style={Estilos.barra}/>
-            <Text style={Estilos.text}>{props.conteudo}</Text>
-            <View/>
-        </View>
-        )
-    }else{
-        return (
-            <View style={Estilos.secondaryView}>
-                <Barra style={Estilos.barra}/>
-                <Text style={Estilos.text}>{props.conteudo}</Text>
-                <Categorias style={Estilos.categorias}/>
-            </View>
-        )
-    }
+        </TouchableOpacity>
+        <Text style={Estilos.text}>{props.conteudo}</Text>
+        {props.valor ? <Categorias style={Estilos.categorias}/> : <View/>/*Ternário para definir se será usado o ícone de filtros*/}
+    </View>
+    )
 }
