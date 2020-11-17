@@ -19,11 +19,11 @@ export default function Index() {
             <View style={Estilos.secondaryView}>
             </View>
             <TouchableOpacity style={Estilos.Btn1}>
-                <Feather name='check' size={normalizador.widthPercentageToDP('4%')} color='white' style={{ left: '15%' }} />
+                <Feather name='check' size={normalizador.widthPercentageToDP('5%')} color='white' style={{ left: '15%' }} />
                 <Text style={Estilos.txtBtn1}>Marcar como concluida</Text>
             </TouchableOpacity>
             <TouchableOpacity style={Estilos.Btn2}>
-                <Feather name='trash-2' size={normalizador.widthPercentageToDP('4%')} color='white' style={{ left: '15%' }} />
+                <Feather name='trash-2' size={normalizador.widthPercentageToDP('5%')} color='white' style={{ left: '15%' }} />
                 <Text style={Estilos.txtBtn2}>Deletar tarefa</Text>
             </TouchableOpacity>
         </View>

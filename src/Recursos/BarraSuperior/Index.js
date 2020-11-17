@@ -5,7 +5,7 @@ import Barra from "../../../assets/Barra/Barra.svg";
 import Categorias from "../../../assets/Barra/Categorias.svg";
 
 
-export default function (props, { navigation }) {
+export default function (props) {
     return (
         <View style={Estilos.secondaryView}>
             <TouchableOpacity onPress={props.onPress}>

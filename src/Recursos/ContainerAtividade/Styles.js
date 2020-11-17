@@ -2,16 +2,11 @@ import {StyleSheet} from "react-native";
 import normalizador from "../normalizador";
 
 export default StyleSheet.create({
-    view1: {
-        height: '60%',
-        width: '100%'
-    },
     container: {
+        marginBottom: 5,
+        paddingBottom: 5,
+        borderWidth: 0.5,
         position: 'relative',
-        flex: 0,
-        width: '100%',
-        height: '100%',
-        elevation: 20,
         borderRadius: 20,
         backgroundColor: '#FFF',
     },
@@ -19,28 +14,25 @@ export default StyleSheet.create({
         paddingLeft: '3%',
         paddingTop: '1%',
         fontFamily: 'Poppins_700Bold',
-        fontSize: normalizador.widthPercentageToDP('5%')
+        fontSize: normalizador.widthPercentageToDP('4%')
     },
     containerS: {
         flexDirection: 'row',
         paddingLeft: '5%',
         paddingRight: '5%',
         justifyContent: 'space-between',
-        width: '100%',
-        height: '100%',
     },
     categoria: {
+        padding: 5,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius:  20,
         flexDirection: 'row',
-        width: '30%',
-        height: '30%',
         backgroundColor: 'green'
     },
     textoCategoria: {
-        fontSize: normalizador.widthPercentageToDP('2.5%'),
-        fontFamily: 'Poppins_700Bold',
+        fontSize: normalizador.widthPercentageToDP('2%'),
+        fontFamily: 'Poppins_600SemiBold',
         color: '#FFF'
     },
     data: {
@@ -51,7 +43,7 @@ export default StyleSheet.create({
         height: '35%',
     },
     textoData: {
-        fontFamily: 'Poppins_700Bold',
-        fontSize: normalizador.widthPercentageToDP('3%'),
+        fontFamily: 'Poppins_600SemiBold',
+        fontSize: normalizador.widthPercentageToDP('2.5%'),
     }
 })

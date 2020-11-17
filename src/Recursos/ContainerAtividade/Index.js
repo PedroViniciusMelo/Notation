@@ -46,7 +46,7 @@ export default function Container(props){
 
     return(
         <TouchableOpacity style={Estilos.container} onPress={NavigateToVisualizarAtividade}>
-            <View style={Estilos.view1}>
+            <View>
                 <Text style={Estilos.texto}>{props.titulo}</Text>
             </View>
             <View style={Estilos.containerS}>
