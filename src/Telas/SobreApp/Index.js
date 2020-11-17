@@ -1,31 +1,38 @@
 import React from 'react';
-import {View, FlatList, Text} from "react-native";
+import { View, FlatList, Text } from "react-native";
 import Estilos from './Styles';
 import BarraSuperior from '../../Recursos/BarraSuperior/Index';
 import Logo from "../../Recursos/Logo/Index";
+import { useNavigation, DrawerActions } from '@react-navigation/native';
 
 //Variável contendo a lista de desenvolvedores
 const pessoas = [
-    {id: '01', desc: 'Pedro Silva'},
-    {id: '02', desc: 'José Pereira'},
-    {id: '03', desc: 'Cleyton Alves'},
-    {id: '04', desc: 'Cleyton Alves'},
-    {id: '05', desc: 'Cleyton Alves'},
+    { id: '01', desc: 'Pedro Silva' },
+    { id: '02', desc: 'José Pereira' },
+    { id: '03', desc: 'Cleyton Alves' },
+    { id: '04', desc: 'Cleyton Alves' },
+    { id: '05', desc: 'Cleyton Alves' },
 ]
 
-export default function HomeScreen (){
-    return(
+export default function HomeScreen() {
+
+    const Navigation = useNavigation();
+
+    return (
         <View style={Estilos.view}>
-            <BarraSuperior valor={false} conteudo='Sobre o APP'/>
+            <BarraSuperior
+                valor={false}
+                onPress={() => Navigation.dispatch(DrawerActions.openDrawer())}
+                conteudo='Sobre o APP' />
             <View style={Estilos.secondaryView}>
-                <Logo/>
+                <Logo />
                 <Text style={Estilos.text}>Desenvolvido</Text>
                 <View style={Estilos.flatListSize}>
                     <FlatList
                         style={Estilos.flatLista}
                         data={pessoas}
                         keyExtractor={item => item.id}
-                        renderItem={({item})=><View style={Estilos.flatlist}><Text style={Estilos.nomes}>{item.desc}</Text></View>}/>
+                        renderItem={({ item }) => <View style={Estilos.flatlist}><Text style={Estilos.nomes}>{item.desc}</Text></View>} />
                 </View>
                 <Text style={Estilos.text}>Contato</Text>
                 <Text style={Estilos.nomes}>email@mail.com</Text>
