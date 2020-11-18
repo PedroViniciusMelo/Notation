@@ -11,7 +11,7 @@ import { useNavigation, DrawerActions } from '@react-navigation/native'
 
 export default function home() {
     const [atividades, setAtividade] = useState(Atividades.all().then(a => setAtividade(a)))
-
+ 
     const Navigation = useNavigation()
     //StackNavigator, usado no botão de adicionar tarefa pra que quando clicado seja aberto o componente de NovaAtividade
     function NavigateToCreatActivity() {
@@ -28,10 +28,22 @@ export default function home() {
                 <FlatList style={{ flex: 1 }}
                     data={atividades}
                     keyExtractor={item => item.id.toString()}
-                    renderItem={({ item }) => <ContainerAtividade titulo={item.titulo} categoria={item.categoria} data={item.data}/>}/>
+                    renderItem={({ item }) => 
+                        <ContainerAtividade 
+                            titulo={item.titulo} 
+                            categoria={item.categoria} 
+                            data={item.data} 
+                            id={item.id} 
+                            descricao={item.descricao}/>}
+                    />
             </View>
-            <TouchableOpacity style={Estilos.btn} onPress={NavigateToCreatActivity}>
-                <Feather name='plus' size={50} color='white' />
+            <TouchableOpacity 
+                style={Estilos.btn} 
+                onPress={NavigateToCreatActivity}>
+                <Feather 
+                    name='plus' 
+                    size={50} 
+                    color='white' />
             </TouchableOpacity>
         </View>
     )

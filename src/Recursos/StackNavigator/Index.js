@@ -1,10 +1,10 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import NovaAtividade from '../../Telas/NovaAtividade/Index';
 import Atividades from '../../Telas/Atividades/Index';
 import VisualizarAtividade from '../../Telas/VisualizarTarefa/Index'
 
-const {Navigator, Screen} = createStackNavigator();
+const { Navigator, Screen } = createStackNavigator();
 
 export default function StackNavigator(){
     return(

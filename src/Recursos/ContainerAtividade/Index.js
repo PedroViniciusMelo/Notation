@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
-import {Feather} from "@expo/vector-icons";
+import { View, Text, TouchableOpacity } from 'react-native';
+import { Feather } from "@expo/vector-icons";
 import normalizador from "../normalizador";
 import Estilos from './Styles';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Container(props){
 
@@ -11,7 +11,7 @@ export default function Container(props){
 
     //StackNavigator, usado no container para que quando ele seja clicado seja aberto o componente de visualizarTarefa
     function NavigateToVisualizarAtividade(){
-        Navigation.navigate('VisualizarAtividade')
+        Navigation.navigate('VisualizarAtividade', props)
     }
 
     //Formata a data que vai ser mostrada no container da data
@@ -45,7 +45,9 @@ export default function Container(props){
     }*/
 
     return(
-        <TouchableOpacity style={Estilos.container} onPress={NavigateToVisualizarAtividade}>
+        <TouchableOpacity 
+            style={Estilos.container} 
+            onPress={NavigateToVisualizarAtividade}>
             <View>
                 <Text style={Estilos.texto}>{props.titulo}</Text>
             </View>
@@ -54,7 +56,11 @@ export default function Container(props){
                     <Text style={Estilos.textoCategoria}>{props.categoria}</Text>
                 </View>
                 <View style={Estilos.data}>
-                    <Feather name='calendar' color='black' size={normalizador.widthPercentageToDP('5%')}/>
+                    <Feather 
+                        name='calendar' 
+                        color='black' 
+                        size={normalizador.widthPercentageToDP('5%')}
+                        />
                     <Text style={Estilos.textoData}>{formatData()}</Text>
                 </View>
             </View>

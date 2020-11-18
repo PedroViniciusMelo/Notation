@@ -25,22 +25,22 @@ export default function Drawer() {
     //Rotas das aplicações
     function AtividadesF() {
         return (
-            <Atividades />
+            <Atividades/>
         )
     }
     function SobreAppF() {
         return (
-            <SobreApp />
+            <SobreApp/>
         )
     }
     function Principal() {
         return (
-            <VisualizarTarefa />
+            <VisualizarTarefa/>
         )
     }
     function Cadastro() {
         return (
-            <NovaAtividade />
+            <NovaAtividade/>
         )
     }
 

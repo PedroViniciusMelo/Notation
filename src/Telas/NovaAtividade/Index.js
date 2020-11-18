@@ -84,15 +84,14 @@ export default function Cadastro() {
     //Passa os dados para o CRUD
     const save = () => {
         //Verifica se nenhum dos campos obrigatórios estão vazios, se não, é passado os dados para o banco de dados e o usuário é retornardo para a tela de Atividades. Se algum campo estiver vazio, será retornado um Alert
-        if (titulo === '' || titulo === " ") {
+        if (titulo === '' || titulo === ' ') {
             return alert('Digite o Titulo')
-        } else if (categoria === '' || categoria === " ") {
+        } else if (categoria === '' || categoria === ' ') {
             return alert('Digite a categoria')
         } else {
             Atividades.create({ titulo: titulo, categoria: categoria, descricao: descricao, data: date.toString(), notificar: btn, atrasado: false, concluida: false })
-                .then(id => console.log("Activity created with id " + id))
+                .then(alert('Adicionado com sucesso!'))
                 .catch(err => console.log(err))
-            alert('Adicionado com sucesso!')
             reset()
             NavigateToAtividades()
         }
@@ -104,28 +103,53 @@ export default function Cadastro() {
             <BarraSuperior
                 conteudo='Nova tarefa'
                 onPress={() => Navigation.dispatch(DrawerActions.openDrawer())}
-                valor={false} />
+                valor={false} 
+                />
             <View style={Estilos.secondaryView}>
                 <Text style={Estilos.titulos}>Título da tarefa</Text>
-                <TextInput style={Estilos.campos} value={titulo} onChangeText={text => setTitulo(text)} />
+                <TextInput 
+                    style={Estilos.campos} 
+                    value={titulo} 
+                    onChangeText={text => setTitulo(text)} />
                 <Text style={Estilos.titulos}>Categoria</Text>
-                <TextInput style={Estilos.campos} value={categoria} onChangeText={categoria => setCategoria(categoria)} />
+                <TextInput 
+                    style={Estilos.campos} 
+                    value={categoria} 
+                    onChangeText={categoria => setCategoria(categoria)} 
+                    />
                 <Text style={Estilos.titulos}>Descrição<Text style={Estilos.descricao}> (Opcional)</Text></Text>
-                <TextInput style={Estilos.textoInput} value={descricao} onChangeText={text => setDescricao(text)} />
+                <TextInput 
+                    style={Estilos.textoInput} 
+                    value={descricao} 
+                    onChangeText={text => setDescricao(text)} 
+                    />
                 <Text style={Estilos.titulos}>Data</Text>
                 <View style={Estilos.data}>
-                    <Feather name='calendar' color='gold' size={normalizador.widthPercentageToDP('4%')} />
+                    <Feather 
+                        name='calendar' 
+                        color='gold' 
+                        size={normalizador.widthPercentageToDP('4%')} 
+                        />
                     <TouchableOpacity onPress={showDatepicker}>
                         <Text style={Estilos.textoData}>{formatData()}</Text>
                     </TouchableOpacity>
-                    <Feather name='clock' color='gold' size={normalizador.widthPercentageToDP('4%')} />
+                    <Feather 
+                        name='clock' 
+                        color='gold' 
+                        size={normalizador.widthPercentageToDP('4%')} 
+                        />
                     <TouchableOpacity onPress={showTimepicker}>
                         <Text style={Estilos.textoData}>{formatTime()}</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={Estilos.viewSwitch}>
                     <Text style={Estilos.notificar}>Noticar</Text>
-                    <Switch trackColor={{ false: '#dedede', true: '#3e7fff' }} thumbColor={btn ? '#7eaaff' : '#dedede'} value={btn} onValueChange={() => { setBtn(!btn) }} />
+                    <Switch 
+                        trackColor={{ false: '#dedede', true: '#3e7fff' }} 
+                        thumbColor={btn ? '#7eaaff' : '#dedede'} 
+                        value={btn} 
+                        onValueChange={() => { setBtn(!btn) }} 
+                        />
                 </View>
             </View>
             <TouchableOpacity style={Estilos.Btn} onPress={save}>

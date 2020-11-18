@@ -4,7 +4,9 @@ import Logo from '../../Recursos/Logo/Index';
 
 export default function Index(){
     return(
-        <LinearGradient style={{ flex : 1, justifyContent : 'center', alignItems: 'center'}} colors={['#0095FF', '#0048FF']}>
+        <LinearGradient 
+            style={{ flex : 1, justifyContent : 'center', alignItems: 'center'}} 
+            colors={['#0095FF', '#0048FF']}>
             <Logo/>
         </LinearGradient>
     );
