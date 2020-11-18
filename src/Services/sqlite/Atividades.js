@@ -8,7 +8,7 @@ db.transaction((tx) => {
   
   //tx.executeSql("DROP TABLE atividades;"); //Deleta a tabela
   tx.executeSql(
-    "CREATE TABLE IF NOT EXISTS atividades (id INTEGER PRIMARY KEY AUTOINCREMENT, titulo TEXT, categoria TEXT, descricao TEXT, data TEXT, notificar TEXT, atrasado TEXT, concluida TXT);" //Cria a tabela se ela não existir
+    "CREATE TABLE IF NOT EXISTS atividades (id INTEGER PRIMARY KEY AUTOINCREMENT, titulo TEXT, categoria TEXT, descricao TEXT, data TEXT, notificar TEXT, atrasado TEXT, concluida TXT, dataConcluida TXT);" //Cria a tabela se ela não existir
   );
 });
 
@@ -18,8 +18,8 @@ const create = (obj) => {
     db.transaction((tx) => {
       //comando SQL modificável
       tx.executeSql(
-        "INSERT INTO atividades (titulo, categoria, descricao, data, notificar, atrasado, concluida) values (?, ?, ?, ?, ?, ?, ?);",
-        [obj.titulo, obj.categoria, obj.descricao, obj.data, obj.notificar, obj.atrasado, obj.concluida],
+        "INSERT INTO atividades (titulo, categoria, descricao, data, notificar, atrasado, concluida, dataConcluida) values (?, ?, ?, ?, ?, ?, ?, ?);",
+        [obj.titulo, obj.categoria, obj.descricao, obj.data, obj.notificar, obj.atrasado, obj.concluida, obj.dataConcluida],
         //-----------------------
         (_, { rowsAffected, insertId }) => {
           if (rowsAffected > 0) resolve(insertId);
@@ -70,8 +70,8 @@ const update = (id, obj) => {
     db.transaction((tx) => {
       //comando SQL modificável
       tx.executeSql(
-        "UPDATE atividades SET titulo=?, categoria=?, descricao=?, data=?, notificar=?, atrasado=?, concluida=? WHERE id=?;",
-        [obj.titulo, obj.categoria, obj.descricao, obj.data, obj.notificar, obj.atrasado, obj.concluida, id],
+        "UPDATE atividades SET titulo=?, categoria=?, descricao=?, data=?, notificar=?, atrasado=?, concluida=?, dataConcluida=? WHERE id=?;",
+        [obj.titulo, obj.categoria, obj.descricao, obj.data, obj.notificar, obj.atrasado, obj.concluida, obj.dataConcluida, id],
         //-----------------------
         (_, { rowsAffected }) => {
           if (rowsAffected > 0) resolve(rowsAffected);
@@ -111,10 +111,7 @@ const findByConcluded = (concluida) => {
         "SELECT * FROM atividades WHERE concluida LIKE ?;",
         [concluida],
         //-----------------------
-        (_, { rows }) => {
-          if (rows.length > 0) resolve(rows._array);
-          else reject("Obj not found: concluida=" + concluida); // nenhum registro encontrado
-        },
+        (_, { rows }) => {resolve(rows._array);},
         (_, error) => reject(error) // erro interno em tx.executeSql
       );
     });

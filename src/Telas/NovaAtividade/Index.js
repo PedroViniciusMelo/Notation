@@ -89,7 +89,7 @@ export default function Cadastro() {
         } else if (categoria === '' || categoria === ' ') {
             return alert('Digite a categoria')
         } else {
-            Atividades.create({ titulo: titulo, categoria: categoria, descricao: descricao, data: date.toString(), notificar: btn, atrasado: false, concluida: false })
+            Atividades.create({ titulo: titulo, categoria: categoria, descricao: descricao, data: date.toString(), notificar: btn, atrasado: false, concluida: false, dataConcluida: '' })
                 .then(alert('Adicionado com sucesso!'))
                 .catch(err => console.log(err))
             reset()

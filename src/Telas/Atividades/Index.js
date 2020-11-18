@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import BarraSuperior from '../../Recursos/BarraSuperior/Index'
+import BarraSuperior from '../../Recursos/BarraSuperior/Index';
 import { View, TouchableOpacity, FlatList } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import ContainerAtividade from '../../Recursos/ContainerAtividade/Index';
@@ -11,7 +11,7 @@ import { useNavigation, DrawerActions } from '@react-navigation/native'
 
 export default function home() {
     const [atividades, setAtividade] = useState(Atividades.findByConcluded('0').then(a => setAtividade(a)))
- 
+    
     const Navigation = useNavigation()
     //StackNavigator, usado no botão de adicionar tarefa pra que quando clicado seja aberto o componente de NovaAtividade
     function NavigateToCreatActivity() {
@@ -25,16 +25,15 @@ export default function home() {
                 onPress={() => Navigation.dispatch(DrawerActions.openDrawer())}
                 valor={true} />
             <View style={Estilos.containerAtividades}>
-                <FlatList style={{ flex: 1 }}
+                <FlatList 
+                    style={{ flex: 1 }}
                     data={atividades}
                     keyExtractor={item => item.id.toString()}
                     renderItem={({ item }) => 
                         <ContainerAtividade 
-                            titulo={item.titulo} 
-                            categoria={item.categoria} 
-                            data={item.data} 
-                            id={item.id} 
-                            descricao={item.descricao}/>}
+                            concluida={false} 
+                            obj={item}
+                            />}
                     />
             </View>
             <TouchableOpacity 

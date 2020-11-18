@@ -12,6 +12,7 @@ import Atividades from '../../Services/sqlite/Atividades';
 export default function Index(props) {
     //ID da atividade
     let id = props.route.params.id
+    console.log(props)
 
     //Dados da atividade
     const [data, setData] = useState(new Date(props.route.params.data))
@@ -81,7 +82,7 @@ export default function Index(props) {
         } else if (categoria === '' || categoria === ' ') {
             return alert('Digite a categoria')
         } else {
-            Atividades.update(id, { titulo: titulo, categoria: categoria, descricao: descricao, data: data.toString() })
+            Atividades.update(id, { titulo: titulo, categoria: categoria, descricao: descricao, data: data.toString(), atrasado: props.route.params.atrasado, concluida: props.route.params.concluida, dataConluida: props.route.params.dataConluida, notificar: props.route.params.notificar })
                 .then(alert('Atualizado com sucesso!'))
                 .catch(err => console.log(err))
             NavigateToAtividades()
@@ -96,7 +97,7 @@ export default function Index(props) {
     }
     //Colocar o campo concluida como True
     const setConcluida = () => {
-        Atividades.update(id, {concluida: true})
+        Atividades.update(id, {titulo: titulo, categoria: categoria, descricao: descricao, data: data.toString(), atrasado: props.route.params.atrasado, notificar: props.route.params.notificar , concluida: true, dataConcluida: new Date().toString()})
             .then(alert('Adicionada como concluida!'))
             .catch(err => console.log(err))
         NavigateToAtividades()

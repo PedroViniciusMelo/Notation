@@ -8,8 +8,8 @@ import LogoSvg from '../../../assets/Logo/Logo.svg'
 import Atividades from "../../Telas/Atividades/Index";
 import NovaAtividade from "../../Telas/NovaAtividade/Index";
 import SobreApp from "../../Telas/SobreApp/Index";
-import VisualizarTarefa from "../../Telas/VisualizarTarefa/Index";
 import StackNavigator from '../StackNavigator/Index';
+import Historico from '../../Telas/Histórico/Index'
 
 export default function Drawer() {
     const SideBar = createDrawerNavigator();
@@ -18,7 +18,7 @@ export default function Drawer() {
             <SideBar.Screen name={'main'} component={StackNavigator} />
             <SideBar.Screen name={'Atividades'} component={AtividadesF} />
             <SideBar.Screen name={'Calendário'} component={Cadastro} />
-            <SideBar.Screen name={'Histórico'} component={Principal} />
+            <SideBar.Screen name={'Histórico'} component={HistoricoF} />
             <SideBar.Screen name={'Sobre o App'} component={SobreAppF} />
         </SideBar.Navigator>
     )
@@ -33,9 +33,9 @@ export default function Drawer() {
             <SobreApp/>
         )
     }
-    function Principal() {
+    function HistoricoF() {
         return (
-            <VisualizarTarefa/>
+            <Historico/>
         )
     }
     function Cadastro() {

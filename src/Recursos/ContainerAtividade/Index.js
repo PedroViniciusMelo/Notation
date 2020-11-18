@@ -11,12 +11,12 @@ export default function Container(props){
 
     //StackNavigator, usado no container para que quando ele seja clicado seja aberto o componente de visualizarTarefa
     function NavigateToVisualizarAtividade(){
-        Navigation.navigate('VisualizarAtividade', props)
+        Navigation.navigate('VisualizarAtividade', props.obj)
     }
 
     //Formata a data que vai ser mostrada no container da data
     const formatData = () => {
-        let date = new Date(props.data)
+        let date = new Date(props.obj.concluida ? props.obj.dataConcluida : props.obj.data)
         let dia = date.getDate();
         let mes = date.getMonth();
         let ano = date.getFullYear();
@@ -46,21 +46,25 @@ export default function Container(props){
 
     return(
         <TouchableOpacity 
+            disabled={props.obj.concluida}
             style={Estilos.container} 
             onPress={NavigateToVisualizarAtividade}>
             <View>
-                <Text style={Estilos.texto}>{props.titulo}</Text>
+                <Text style={Estilos.texto}>{props.obj.titulo}</Text>
             </View>
             <View style={Estilos.containerS}>
                 <View style={Estilos.categoria}>
-                    <Text style={Estilos.textoCategoria}>{props.categoria}</Text>
+                    <Text style={Estilos.textoCategoria}>{props.obj.categoria}</Text>
                 </View>
                 <View style={Estilos.data}>
-                    <Feather 
-                        name='calendar' 
-                        color='black' 
-                        size={normalizador.widthPercentageToDP('5%')}
-                        />
+                    {props.obj.concluida ? 
+                        <Text>Atividade concluida em </Text> 
+                        : 
+                        <Feather 
+                            name='calendar' 
+                            color='black' 
+                            size={normalizador.widthPercentageToDP('5%')}
+                        />}
                     <Text style={Estilos.textoData}>{formatData()}</Text>
                 </View>
             </View>
