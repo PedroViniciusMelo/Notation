@@ -102,47 +102,32 @@ const find = (id) => {
   });
 };
 
-export default {
-  create,
-  update,
-  all,
-  remove,
-  find
-};
-
-
-/**
- * BUSCA UM REGISTRO POR MEIO DA MARCA (brand)
- * - Recebe a marca do carro;
- * - Retorna uma Promise:
- *  - O resultado da Promise é um array com os objetos encontrados;
- *  - Pode retornar erro (reject) caso o ID não exista ou então caso ocorra erro no SQL;
- *  - Pode retornar um array vazio caso nenhum objeto seja encontrado.
- */
-/*
-const findByBrand = (brand) => {
+//Busca no banco as atividades marcadas como conluida ou não, use 1 para concluida e 0 para não concluida
+const findByConcluded = (concluida) => {
   return new Promise((resolve, reject) => {
     db.transaction((tx) => {
       //comando SQL modificável
       tx.executeSql(
-        "SELECT * FROM cars WHERE brand LIKE ?;",
-        [brand],
+        "SELECT * FROM atividades WHERE concluida LIKE ?;",
+        [concluida],
         //-----------------------
         (_, { rows }) => {
           if (rows.length > 0) resolve(rows._array);
-          else reject("Obj not found: brand=" + brand); // nenhum registro encontrado
+          else reject("Obj not found: concluida=" + concluida); // nenhum registro encontrado
         },
         (_, error) => reject(error) // erro interno em tx.executeSql
       );
     });
   });
 };
-*/
-/**
- * BUSCA TODOS OS REGISTROS DE UMA DETERMINADA TABELA
- * - Não recebe parâmetros;
- * - Retorna uma Promise:
- *  - O resultado da Promise é uma lista (Array) de objetos;
- *  - Pode retornar erro (reject) caso o ID não exista ou então caso ocorra erro no SQL;
- *  - Pode retornar um array vazio caso não existam registros.
- */
+
+export default {
+  create,
+  update,
+  all,
+  remove,
+  find,
+  findByConcluded
+};
+
+

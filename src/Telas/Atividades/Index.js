@@ -10,7 +10,7 @@ import { useNavigation, DrawerActions } from '@react-navigation/native'
 
 
 export default function home() {
-    const [atividades, setAtividade] = useState(Atividades.all().then(a => setAtividade(a)))
+    const [atividades, setAtividade] = useState(Atividades.findByConcluded('0').then(a => setAtividade(a)))
  
     const Navigation = useNavigation()
     //StackNavigator, usado no botão de adicionar tarefa pra que quando clicado seja aberto o componente de NovaAtividade
