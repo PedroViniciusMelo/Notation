@@ -15,7 +15,7 @@ export default StyleSheet.create({
     data: {
         alignItems: 'center',
         justifyContent: 'space-evenly',
-        padding: 10,
+        padding: '3%',
         flexDirection: 'row',
         position: 'relative',
         backgroundColor: 'blue',
@@ -29,7 +29,6 @@ export default StyleSheet.create({
         fontSize: normalizador.widthPercentageToDP('4%')
     },
     Btn: {
-        top: '7%',
         height: '7%',
         width: '35%',
         backgroundColor: 'blue',
@@ -38,7 +37,7 @@ export default StyleSheet.create({
         justifyContent: 'center'
     },
     textoInput : {
-        padding: 10,
+        padding: '3%',
         width: '95%',
         height: '33%',
         borderWidth: 1,
@@ -46,11 +45,11 @@ export default StyleSheet.create({
         borderRadius: 20
     },
     secondaryView: {
+        margin: '3%',
         height: '70%',
         width: '90%',
         backgroundColor: '#FFF',
         elevation: 20,
-        top: '2%',
         borderRadius: 20,
         padding: '4%'
     },

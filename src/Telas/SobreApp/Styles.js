@@ -6,6 +6,7 @@ export default StyleSheet.create({
         flex : 1
     },
     secondaryView:{
+        marginTop: '3%',
         position: 'relative',
         padding: '2%',
         alignItems : 'center',
@@ -13,14 +14,13 @@ export default StyleSheet.create({
         height: '100%'
     },
     text: {
-        paddingTop: '1%',
         fontFamily: 'Poppins_700Bold',
         color: 'black',
         fontSize: normalizador.widthPercentageToDP('6%')
     },
     flatlist: {
         alignItems: 'center',
-        padding : '3%',
+        margin : '3%',
     },
     nomes: {
         color: 'black',

@@ -3,27 +3,23 @@ import normalizador from "../normalizador";
 
 export default StyleSheet.create({
     container: {
-        marginBottom: 5,
-        paddingBottom: 5,
+        marginBottom: '1.5%',
+        padding: '2%',
         borderWidth: 0.5,
         position: 'relative',
         borderRadius: 20,
         backgroundColor: '#FFF',
     },
     texto: {
-        paddingLeft: '3%',
-        paddingTop: '1%',
         fontFamily: 'Poppins_700Bold',
         fontSize: normalizador.widthPercentageToDP('4%')
     },
     containerS: {
         flexDirection: 'row',
-        paddingLeft: '5%',
-        paddingRight: '5%',
         justifyContent: 'space-between',
     },
     categoria: {
-        padding: 5,
+        padding: '1.5%',
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius:  20,
@@ -36,14 +32,15 @@ export default StyleSheet.create({
         color: '#FFF'
     },
     data: {
-        alignItems: 'center',
-        borderRadius:  20,
         flexDirection: 'row',
-        width: '30%',
-        height: '35%',
     },
     textoData: {
         fontFamily: 'Poppins_600SemiBold',
+        fontSize: normalizador.widthPercentageToDP('2.5%'),
+    },
+    textoData2:{
+        color: 'red',
+        fontFamily: 'Poppins_400Regular',
         fontSize: normalizador.widthPercentageToDP('2.5%'),
     }
 })

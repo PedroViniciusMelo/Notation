@@ -1,10 +1,12 @@
 import { StyleSheet } from "react-native";
+import normalizador from '../normalizador'
 
 export default StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#0085FF',
-        paddingTop: 30
+        paddingTop: '10%',
+    
     },
     logo: {
         justifyContent: 'center',
@@ -20,6 +22,6 @@ export default StyleSheet.create({
         backgroundColor: 'white',
         borderRadius: 40,
         fontSize: 40,
-        marginTop: 10
+        marginTop: '2%'
     }
 })

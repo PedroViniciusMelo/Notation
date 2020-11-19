@@ -5,7 +5,8 @@ import { Feather } from "@expo/vector-icons";
 import ContainerAtividade from '../../Recursos/ContainerAtividade/Index';
 import Estilos from './Style';
 import Atividades from '../../Services/sqlite/Atividades';
-import { useNavigation, DrawerActions } from '@react-navigation/native'
+import { useNavigation, DrawerActions } from '@react-navigation/native';
+import normalizador from '../../Recursos/normalizador';
 
 
 
@@ -41,7 +42,7 @@ export default function home() {
                 onPress={NavigateToCreatActivity}>
                 <Feather 
                     name='plus' 
-                    size={50} 
+                    size={normalizador.widthPercentageToDP('10%')} 
                     color='white' />
             </TouchableOpacity>
         </View>

@@ -18,15 +18,16 @@ export default function Container(props){
     const formatData = () => {
         let date = new Date(props.obj.concluida ? props.obj.dataConcluida : props.obj.data)
         let dia = date.getDate();
-        let mes = date.getMonth();
+        let mes = date.getMonth() + 1;
         let ano = date.getFullYear();
 
         if (dia.toString().length === 1){
-            dia = '0'+ dia
+            dia = '0' + dia
         }
         if (mes.toString().length === 1){
-            mes = '0'+ (mes + 1)
+            mes = '0' + mes
         }
+        
         return dia + '/'+ mes + '/' + ano
     }
     //Formata as horas e minutos que vão ser mostrados no campo data. No momento a função não está sendo usada, porém pode ser implementada se necessário.
@@ -57,15 +58,17 @@ export default function Container(props){
                     <Text style={Estilos.textoCategoria}>{props.obj.categoria}</Text>
                 </View>
                 <View style={Estilos.data}>
-                    {props.obj.concluida ? 
-                        <Text>Atividade concluida em </Text> 
-                        : 
-                        <Feather 
-                            name='calendar' 
-                            color='black' 
-                            size={normalizador.widthPercentageToDP('5%')}
-                        />}
-                    <Text style={Estilos.textoData}>{formatData()}</Text>
+                    <View style={{flexDirection: 'row'}}>
+                        {props.obj.concluida ? 
+                            <Text style={Estilos.textoData2}>Atividade concluida em </Text> 
+                            : 
+                            <Feather 
+                                name='calendar' 
+                                color='black' 
+                                size={normalizador.widthPercentageToDP('5%')}
+                                />}
+                        <Text style={Estilos.textoData}>{formatData()}</Text>
+                    </View>
                 </View>
             </View>
         </TouchableOpacity>

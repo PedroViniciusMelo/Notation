@@ -3,7 +3,7 @@ import normalizador from "../normalizador";
 
 export default StyleSheet.create({
     secondaryView:{
-        padding: 20,
+        padding: '4%',
         justifyContent: 'space-between',
         alignItems : 'center',
         backgroundColor : '#006EFF',

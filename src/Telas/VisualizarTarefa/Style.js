@@ -8,8 +8,8 @@ export default StyleSheet.create({
         alignItems: 'center'
     },
     secondaryView:{
+        margin: '3%',
         padding: '4%',
-        top: '2%',
         height: '60%',
         width: '90%',
         elevation: 20,
@@ -71,7 +71,10 @@ export default StyleSheet.create({
         padding: 10
     },
     Btn1:{
-        top: '10%',
+        justifyContent: 'space-between',
+        paddingLeft: '4%',
+        paddingRight: '4%',
+        margin: '2%',
         height: '7%',
         width: '50%',
         backgroundColor: 'blue',
@@ -81,7 +84,10 @@ export default StyleSheet.create({
         elevation: 5
     },
     Btn2:{
-        top: '11%',
+        justifyContent: 'space-between',
+        paddingLeft: '4%',
+        paddingRight: '4%',
+        margin: '2%',
         height: '7%',
         width: '50%',
         backgroundColor: 'red',
@@ -91,13 +97,7 @@ export default StyleSheet.create({
         elevation: 5
     },
     txtBtn1:{
-        left : 13,
-        fontFamily: 'Poppins_700Bold',
-        color: 'white',
-        fontSize: normalizador.widthPercentageToDP('3%')
-    },
-    txtBtn2:{
-        left : 13,
+        textAlign: 'center',
         fontFamily: 'Poppins_700Bold',
         color: 'white',
         fontSize: normalizador.widthPercentageToDP('3%')

@@ -12,7 +12,6 @@ import Atividades from '../../Services/sqlite/Atividades';
 export default function Index(props) {
     //ID da atividade
     let id = props.route.params.id
-    console.log(props)
 
     //Dados da atividade
     const [data, setData] = useState(new Date(props.route.params.data))
@@ -176,7 +175,6 @@ export default function Index(props) {
                         name='edit' 
                         size={normalizador.widthPercentageToDP('5%')} 
                         color='white' 
-                        style={{ left: '15%' }} 
                         />
                     <Text style={Estilos.txtBtn1}>Salvar alterações</Text>
                 </TouchableOpacity> 
@@ -188,9 +186,9 @@ export default function Index(props) {
                         name='check' 
                         size={normalizador.widthPercentageToDP('5%')} 
                         color='white' 
-                        style={{ left: '15%' }} 
                         />
                     <Text style={Estilos.txtBtn1}>Marcar como concluida</Text>
+                    <View/>
                 </TouchableOpacity>
             }
             <TouchableOpacity 
@@ -200,9 +198,9 @@ export default function Index(props) {
                     name='trash-2' 
                     size={normalizador.widthPercentageToDP('5%')} 
                     color='white' 
-                    style={{ left: '15%' }} 
                     />
-                <Text style={Estilos.txtBtn2}>Deletar tarefa</Text>
+                <Text style={Estilos.txtBtn1}>Deletar tarefa</Text>
+                <View/>
             </TouchableOpacity>
             {show && (
                 <DateTimePicker

@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import normalizador from '../../Recursos/normalizador'
 
 export default StyleSheet.create({
     container:{
@@ -12,9 +13,9 @@ export default StyleSheet.create({
         position: 'relative'
     },
     btn:{
-        marginTop: 10,
+        marginTop: '2%',
         width: '12%',
-        height: '8%',
+        height: normalizador.widthPercentageToDP('12%'),
         backgroundColor: 'blue',
         borderRadius: 60,
         alignItems: 'center',

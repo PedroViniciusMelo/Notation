@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Switch } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Switch, ScrollView } from "react-native";
 import BarraSuperior from "../../Recursos/BarraSuperior/Index";
 import Estilos from './Styles';
 import Atividades from '../../Services/sqlite/Atividades';
@@ -110,7 +110,8 @@ export default function Cadastro() {
                 <TextInput 
                     style={Estilos.campos} 
                     value={titulo} 
-                    onChangeText={text => setTitulo(text)} />
+                    onChangeText={text => setTitulo(text)}
+                    />
                 <Text style={Estilos.titulos}>Categoria</Text>
                 <TextInput 
                     style={Estilos.campos} 
@@ -121,6 +122,8 @@ export default function Cadastro() {
                 <TextInput 
                     style={Estilos.textoInput} 
                     value={descricao} 
+                    multiline
+                    scrollEnabled={true}
                     onChangeText={text => setDescricao(text)} 
                     />
                 <Text style={Estilos.titulos}>Data</Text>
