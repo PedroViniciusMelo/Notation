@@ -29,8 +29,8 @@ export default StyleSheet.create({
         fontSize: normalizador.widthPercentageToDP('4%')
     },
     Btn: {
-        height: '7%',
-        width: '35%',
+        minHeight: '7%',
+        minWidth: '35%',
         backgroundColor: 'blue',
         borderRadius: 20,
         alignItems: 'center',
@@ -39,15 +39,14 @@ export default StyleSheet.create({
     textoInput : {
         padding: '3%',
         width: '95%',
-        height: '33%',
+        height: '30%',
         borderWidth: 1,
         borderColor: '#d9d9d9',
         borderRadius: 20
     },
     secondaryView: {
-        margin: '3%',
-        height: '70%',
-        width: '90%',
+        justifyContent: 'space-between',
+        flex: 1,
         backgroundColor: '#FFF',
         elevation: 20,
         borderRadius: 20,

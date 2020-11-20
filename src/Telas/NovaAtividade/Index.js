@@ -105,6 +105,7 @@ export default function Cadastro() {
                 onPress={() => Navigation.dispatch(DrawerActions.openDrawer())}
                 valor={false} 
                 />
+            <View style={{minWidth: '100%', maxHeight: '75%',justifyContent: 'center', padding: '1%'}}>
             <View style={Estilos.secondaryView}>
                 <Text style={Estilos.titulos}>Título da tarefa</Text>
                 <TextInput 
@@ -155,9 +156,12 @@ export default function Cadastro() {
                         />
                 </View>
             </View>
+            
+            </View>
             <TouchableOpacity style={Estilos.Btn} onPress={save}>
                 <Text style={Estilos.textBtn}>Adicionar</Text>
             </TouchableOpacity>
+            
             {show && (
                 <DateTimePicker
                     minimumDate={new Date}

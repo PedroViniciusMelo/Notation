@@ -7,12 +7,12 @@ import Categorias from "../../../assets/Barra/Categorias.svg";
 
 export default function (props) {
     return (
-        <View style={Estilos.secondaryView}>
+        <View style={Estilos.container}>
             <TouchableOpacity onPress={props.onPress}>
-                <Barra style={Estilos.barra} />
+                <Barra/>
             </TouchableOpacity>
             <Text style={Estilos.text}>{props.conteudo}</Text>
-            {props.valor ? <Categorias style={Estilos.categorias} /> : <View />/*Ternário para definir se será usado o ícone de filtros*/}
+            {props.valor ? <Categorias/> : <View />/*Ternário para definir se será usado o ícone de filtros*/}
         </View>
     )
 }

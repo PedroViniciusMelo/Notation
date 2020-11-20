@@ -2,19 +2,14 @@ import {StyleSheet} from "react-native";
 import normalizador from "../../Recursos/normalizador";
 
 export default StyleSheet.create({
-    mainView:{
-        position: 'relative',
+    container:{
         flex: 1,
-        alignItems: 'center'
+        alignItems: 'center',
     },
-    secondaryView:{
-        margin: '3%',
-        padding: '4%',
-        height: '60%',
-        width: '90%',
-        elevation: 20,
-        backgroundColor: '#FFF',
-        borderRadius: 20
+    containerSecundario: {
+        flex: 1, 
+        padding: '2%', 
+        alignItems: 'center', 
     },
     viewSuperior: {
         flexDirection: 'row', 
@@ -23,19 +18,17 @@ export default StyleSheet.create({
         marginBottom: '1%'
     },
     txtTitulo : {
+        maxWidth: '80%',
         fontFamily: 'Poppins_600SemiBold', 
         fontSize: normalizador.widthPercentageToDP('7%'), 
         color: 'black'
     },
     categoria : {
         backgroundColor: 'red', 
-        width: '40%', 
-        height: '10%', 
         borderRadius: 20, 
         padding: '1%', 
-        justifyContent: 'center', 
+        maxWidth: '45%', 
         alignItems: 'center', 
-        marginBottom: '3%'
     },
     txtCategoria: {
         fontFamily: 'Poppins_600SemiBold', 
@@ -45,17 +38,15 @@ export default StyleSheet.create({
     data: {
         flexDirection: 'row', 
         backgroundColor: 'blue', 
-        width: '45%', 
-        height: '10%', 
-        padding: 5, 
+        maxWidth: '45%', 
+        padding: '1%', 
         borderRadius: 20, 
-        marginBottom: '3%', 
         justifyContent: 'space-evenly', 
         alignItems: 'center'
     },
     txtData: {
         fontFamily: 'Poppins_600SemiBold', 
-        fontSize: normalizador.widthPercentageToDP('2%'), 
+        fontSize: normalizador.widthPercentageToDP('3%'), 
         color: 'white'
     },
     descricao: {
@@ -64,7 +55,8 @@ export default StyleSheet.create({
         color: 'black'
     },
     txtDescricao: {
-        width: '100%', 
+        minHeight: '30%',
+        minWidth: '100%',
         height: '42%', 
         borderWidth: 1, 
         borderRadius: 20, 
@@ -72,11 +64,8 @@ export default StyleSheet.create({
     },
     Btn1:{
         justifyContent: 'space-between',
-        paddingLeft: '4%',
-        paddingRight: '4%',
+        padding: '4%',
         margin: '2%',
-        height: '7%',
-        width: '50%',
         backgroundColor: 'blue',
         borderRadius: 40,
         alignItems: 'center',
@@ -85,11 +74,8 @@ export default StyleSheet.create({
     },
     Btn2:{
         justifyContent: 'space-between',
-        paddingLeft: '4%',
-        paddingRight: '4%',
+        padding: '4%',
         margin: '2%',
-        height: '7%',
-        width: '50%',
         backgroundColor: 'red',
         borderRadius: 40,
         alignItems: 'center',

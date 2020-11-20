@@ -3,10 +3,10 @@ import normalizador from "../normalizador";
 
 export default StyleSheet.create({
     container: {
+        flex: 1,
         marginBottom: '1.5%',
         padding: '2%',
         borderWidth: 0.5,
-        position: 'relative',
         borderRadius: 20,
         backgroundColor: '#FFF',
     },

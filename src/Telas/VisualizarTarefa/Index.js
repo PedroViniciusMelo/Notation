@@ -110,109 +110,117 @@ export default function Index(props) {
 
 
     return (
-        <View style={Estilos.mainView}>
+        <View style={Estilos.container}>
             <BarraSuperior
                 valor={false}
                 conteudo='Visualizar'
                 onPress={() => Navigation.dispatch(DrawerActions.openDrawer())} />
-            <View style={Estilos.secondaryView}>
-                <View style={Estilos.viewSuperior}>
-                    <TextInput 
+            <View style={Estilos.containerSecundario}>
+                <View style={{minWidth: '100%', minHeight: '60%', padding: '3%', justifyContent: 'space-around', elevation: 20, backgroundColor: 'white', borderRadius: 20}}>
+
+                    <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+                        <TextInput 
                             value={titulo} 
                             onChangeText={text => setTitulo(text)} 
                             editable={editavel} 
                             style={Estilos.txtTitulo}
                             />
-                    <TouchableOpacity onPress={() => setEditavel(!editavel)} >
-                        <Feather 
-                            name='edit' 
-                            size={normalizador.widthPercentageToDP('6%')}/>
-                    </TouchableOpacity>
-                </View>
-                <View style={Estilos.categoria}>
-                    <TextInput 
+                        <TouchableOpacity onPress={() => setEditavel(!editavel)} >
+                            <Feather 
+                                name='edit' 
+                                size={normalizador.widthPercentageToDP('6%')}/>
+                        </TouchableOpacity>
+                    </View>
+                
+                    <View style={Estilos.categoria}>
+                        <TextInput 
                         style={Estilos.txtCategoria} 
                         value={categoria} 
                         onChangeText={text => setCategoria(text)} 
                         editable={editavel} 
                         />
-                </View>
-                <View style={Estilos.data}>
-                    <Feather 
-                        name='calendar' 
-                        size={normalizador.widthPercentageToDP('5%')}
-                        color='gold'
-                        />
-                    <TouchableOpacity 
-                        onPress={showDatepicker} 
-                        disabled={editavel}>
-                        <Text style={Estilos.txtData}>{formatData()}</Text>
-                    </TouchableOpacity>
+                    </View>
+
+                    <View style={Estilos.data}>
                         <Feather 
-                            name='clock' 
-                            size={normalizador.widthPercentageToDP('5%')}
+                            name='calendar' 
+                            size={normalizador.widthPercentageToDP('4%')}
                             color='gold'
                             />
+                        <TouchableOpacity 
+                            onPress={showDatepicker} 
+                            disabled={!editavel}>
+                            <Text style={Estilos.txtData}>{formatData()}</Text>
+                        </TouchableOpacity>
+                        <Feather 
+                            name='clock' 
+                            size={normalizador.widthPercentageToDP('4%')}
+                            color='gold'
+                            />
+                        <TouchableOpacity 
+                            onPress={showTimepicker} 
+                            disabled={!editavel}>
+                            <Text style={Estilos.txtData}>{formatTime()}</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    <Text style={Estilos.descricao}>Descrição</Text>
+                    
+                    <TextInput 
+                        style={Estilos.txtDescricao}
+                        value={descricao} 
+                        editable={editavel}
+                        onChangeText={text => setDescricao(text)}
+                        />
+                </View>
+                <View style={{maxHeight: '30%'}}>
+                    {editavel ?  
+                        <TouchableOpacity 
+                            style={Estilos.Btn1} 
+                            onPress={update}>
+                            <Feather 
+                                name='edit' 
+                                size={normalizador.widthPercentageToDP('5%')} 
+                                color='white' 
+                                />
+                            <Text style={Estilos.txtBtn1}>Salvar alterações</Text>
+                        </TouchableOpacity> 
+                        : 
+                        <TouchableOpacity 
+                            style={Estilos.Btn1} 
+                            onPress={setConcluida}>
+                            <Feather 
+                                name='check' 
+                                size={normalizador.widthPercentageToDP('5%')} 
+                                color='white' 
+                                />
+                            <Text style={Estilos.txtBtn1}>Marcar como concluida</Text>
+                        <View/>
+                        </TouchableOpacity>
+                    }
                     <TouchableOpacity 
-                        onPress={showTimepicker} 
-                        disabled={editavel}>
-                        <Text style={Estilos.txtData}>{formatTime()}</Text>
+                        style={Estilos.Btn2} 
+                        onPress={deletar}>
+                        <Feather 
+                            name='trash-2' 
+                            size={normalizador.widthPercentageToDP('5%')} 
+                            color='white' 
+                            />
+                        <Text style={Estilos.txtBtn1}>Deletar tarefa</Text>
+                        <View/>
                     </TouchableOpacity>
                 </View>
-                <Text style={Estilos.descricao}>Descrição</Text>
-                <TextInput 
-                    style={Estilos.txtDescricao}
-                    value={descricao} 
-                    editable={editavel}
-                    onChangeText={text => setDescricao(text)}
-                    />
+                {show && (
+                    <DateTimePicker
+                        minimumDate={new Date}
+                        testID="dateTimePicker"
+                        value={data}
+                        mode={mode}
+                        is24Hour={true}
+                        display="default"
+                        onChange={onChange}
+                        />)}
             </View>
-            {editavel ?  
-                <TouchableOpacity 
-                    style={Estilos.Btn1} 
-                    onPress={update}>
-                    <Feather 
-                        name='edit' 
-                        size={normalizador.widthPercentageToDP('5%')} 
-                        color='white' 
-                        />
-                    <Text style={Estilos.txtBtn1}>Salvar alterações</Text>
-                </TouchableOpacity> 
-                : 
-                <TouchableOpacity 
-                    style={Estilos.Btn1} 
-                    onPress={setConcluida}>
-                    <Feather 
-                        name='check' 
-                        size={normalizador.widthPercentageToDP('5%')} 
-                        color='white' 
-                        />
-                    <Text style={Estilos.txtBtn1}>Marcar como concluida</Text>
-                    <View/>
-                </TouchableOpacity>
-            }
-            <TouchableOpacity 
-                style={Estilos.Btn2} 
-                onPress={deletar}>
-                <Feather 
-                    name='trash-2' 
-                    size={normalizador.widthPercentageToDP('5%')} 
-                    color='white' 
-                    />
-                <Text style={Estilos.txtBtn1}>Deletar tarefa</Text>
-                <View/>
-            </TouchableOpacity>
-            {show && (
-                <DateTimePicker
-                    minimumDate={new Date}
-                    testID="dateTimePicker"
-                    value={data}
-                    mode={mode}
-                    is24Hour={true}
-                    display="default"
-                    onChange={onChange}
-                />
-            )}
         </View>
     )
 }

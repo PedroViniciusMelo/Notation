@@ -9,7 +9,8 @@ import Atividades from "../../Telas/Atividades/Index";
 import NovaAtividade from "../../Telas/NovaAtividade/Index";
 import SobreApp from "../../Telas/SobreApp/Index";
 import StackNavigator from '../StackNavigator/Index';
-import Historico from '../../Telas/Histórico/Index'
+import Historico from '../../Telas/Histórico/Index';
+import SplashScreen from '../../Telas/TelaDeInicio/Index';
 
 export default function Drawer() {
     const SideBar = createDrawerNavigator();
@@ -40,7 +41,7 @@ export default function Drawer() {
     }
     function Cadastro() {
         return (
-            <NovaAtividade/>
+            <SplashScreen/>
         )
     }
 

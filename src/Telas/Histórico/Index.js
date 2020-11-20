@@ -18,7 +18,7 @@ export default function historico(){
                 onPress={() => Navigation.dispatch(DrawerActions.openDrawer())}/>
             <View style={Estilos.contianerFlatList}>
                 <FlatList 
-                    style={{ flex: 1 }}
+                    style={Estilos.flatList}
                     data={atividades}
                     keyExtractor={item => item.id.toString()}
                     renderItem={({ item }) => 

@@ -2,24 +2,21 @@ import { StyleSheet } from "react-native";
 import normalizador from "../normalizador";
 
 export default StyleSheet.create({
-    secondaryView:{
+    container:{
+        flex: 1,
         padding: '4%',
         justifyContent: 'space-between',
         alignItems : 'center',
         backgroundColor : '#006EFF',
-        height: '12%',
-        width : '100%',
+        minHeight: '13%',
+        maxHeight: '13%',
+        maxWidth: '100%',
+        minWidth: '100%',
         flexDirection : 'row',
-    },
-    barra: {
-        position: 'relative',
     },
     text: {
         fontFamily: 'Poppins_600SemiBold',
         color: 'white',
         fontSize: normalizador.widthPercentageToDP('5%')
     },
-    categorias: {
-        position: 'relative'
-    }
 });

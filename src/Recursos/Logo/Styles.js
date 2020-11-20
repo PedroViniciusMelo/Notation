@@ -4,18 +4,20 @@ import normalizador from '../normalizador'
 
 export default StyleSheet.create({
     container: {
-        flex: 0,
+        flex: 1,
         elevation: 15,
-        flexDirection : 'row',
+        alignItems: 'center',
         justifyContent: 'center',
         alignItems: 'center',
-        width: '50%',
-        height: '13%',
+        minWidth: '50%',
+        maxWidth: '50%',
+        minHeight: '14%',
+        maxHeight: '14%',
         backgroundColor: 'white',
         borderRadius: 20
     },
     tamanhoLogo: {
         width: normalizador.widthPercentageToDP('40%'),
-        height: normalizador.heightPercentageToDP('30%')
+        height: normalizador.heightPercentageToDP('20%')
     }
 });

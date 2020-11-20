@@ -3,36 +3,23 @@ import normalizador from "../../Recursos/normalizador";
 
 export default StyleSheet.create({
     view: {
-        flex : 1
+        flex : 1,
+        alignItems: 'center'
     },
-    secondaryView:{
-        marginTop: '3%',
-        position: 'relative',
-        padding: '2%',
-        alignItems : 'center',
-        width: '100%',
-        height: '100%'
+    containerSecundario: {
+        justifyContent: 'space-between',
+        flex: 1, 
+        padding: '4%', 
+        alignItems: 'center', 
     },
     text: {
         fontFamily: 'Poppins_700Bold',
         color: 'black',
         fontSize: normalizador.widthPercentageToDP('6%')
     },
-    flatlist: {
-        alignItems: 'center',
-        margin : '3%',
-    },
     nomes: {
         color: 'black',
         fontSize: normalizador.widthPercentageToDP('4%'),
-    },
-    flatListSize: {
-        height : '23%',
-        width : '40%'
-    },
-    flatLista: {
-        backgroundColor: '#f5f5f5',
-        borderRadius: 30
     },
     quadrado : {
         justifyContent: 'center',
@@ -47,9 +34,12 @@ export default StyleSheet.create({
         fontSize : normalizador.widthPercentageToDP('3.5%'),
     },
     direitos : {
-        top: '10%',
         color : 'black',
         fontWeight : 'bold',
         fontSize: normalizador.widthPercentageToDP('4%')
+    },
+    containerFl: {
+        alignItems: 'center', 
+        maxHeight: '30%'
     }
 });

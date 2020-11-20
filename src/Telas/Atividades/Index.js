@@ -6,8 +6,6 @@ import ContainerAtividade from '../../Recursos/ContainerAtividade/Index';
 import Estilos from './Style';
 import Atividades from '../../Services/sqlite/Atividades';
 import { useNavigation, DrawerActions } from '@react-navigation/native';
-import normalizador from '../../Recursos/normalizador';
-
 
 
 export default function home() {
@@ -25,9 +23,9 @@ export default function home() {
                 conteudo='Atividades'
                 onPress={() => Navigation.dispatch(DrawerActions.openDrawer())}
                 valor={true} />
-            <View style={Estilos.containerAtividades}>
+            <View style={Estilos.containerSecundario}>
                 <FlatList 
-                    style={{ flex: 1 }}
+                    style={Estilos.flatList}
                     data={atividades}
                     keyExtractor={item => item.id.toString()}
                     renderItem={({ item }) => 
@@ -36,15 +34,16 @@ export default function home() {
                             obj={item}
                             />}
                     />
-            </View>
             <TouchableOpacity 
                 style={Estilos.btn} 
                 onPress={NavigateToCreatActivity}>
                 <Feather 
                     name='plus' 
-                    size={normalizador.widthPercentageToDP('10%')} 
+                    size={60} 
                     color='white' />
             </TouchableOpacity>
+            </View>
+            
         </View>
     )
 }

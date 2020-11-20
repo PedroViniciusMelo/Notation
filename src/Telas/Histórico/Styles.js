@@ -6,9 +6,12 @@ export default StyleSheet.create({
         alignItems: 'center'
     },
     contianerFlatList: {
-        paddingTop: '3%',
-        width: '95%',
-        height: '78%',
-        position: 'relative'
+        flex: 1, 
+        alignItems: 'center', 
+        padding: '2%'
+     
+    },
+    flatList: {
+        minWidth: '100%'
     }
 })
