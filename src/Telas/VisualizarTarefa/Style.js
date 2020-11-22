@@ -3,63 +3,72 @@ import normalizador from "../../Recursos/normalizador";
 
 export default StyleSheet.create({
     container:{
-        flex: 1,
-        alignItems: 'center',
+        alignItems: 'stretch',
     },
     containerSecundario: {
-        flex: 1, 
-        padding: '2%', 
-        alignItems: 'center', 
+
+        alignItems: 'center',
+        justifyContent: 'space-evenly'
+    },
+    containerFatList:{
+        padding: '4%',
+        elevation: 10,
+        borderRadius: 20,
+        backgroundColor: 'white',
+        marginHorizontal: '3%',
+        maxHeight: '66%'
+    },
+    contanierTituloAtividade: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
     },
     viewSuperior: {
-        flexDirection: 'row', 
-        width: '100%', 
-        justifyContent: 'space-between', 
+        flexDirection: 'row',
+        width: '100%',
+        justifyContent: 'space-between',
         marginBottom: '1%'
     },
     txtTitulo : {
         maxWidth: '80%',
-        fontFamily: 'Poppins_600SemiBold', 
-        fontSize: normalizador.widthPercentageToDP('7%'), 
-        color: 'black'
+
     },
     categoria : {
-        backgroundColor: 'red', 
-        borderRadius: 20, 
-        padding: '1%', 
-        maxWidth: '45%', 
-        alignItems: 'center', 
+        backgroundColor: 'red',
+        borderRadius: 20,
+        padding: '1%',
+        maxWidth: '45%',
+        alignItems: 'center',
     },
     txtCategoria: {
-        fontFamily: 'Poppins_600SemiBold', 
-        fontSize: normalizador.widthPercentageToDP('3%'), 
+        fontFamily: 'Poppins_600SemiBold',
+        fontSize: normalizador.widthPercentageToDP('3%'),
         color: 'white'
     },
     data: {
-        flexDirection: 'row', 
-        backgroundColor: 'blue', 
-        maxWidth: '45%', 
-        padding: '1%', 
-        borderRadius: 20, 
-        justifyContent: 'space-evenly', 
+        marginVertical: '4%',
+        flexDirection: 'row',
+        backgroundColor: 'blue',
+        maxWidth: '45%',
+        padding: '1%',
+        borderRadius: 20,
+        justifyContent: 'space-evenly',
         alignItems: 'center'
     },
     txtData: {
-        fontFamily: 'Poppins_600SemiBold', 
-        fontSize: normalizador.widthPercentageToDP('3%'), 
+        fontFamily: 'Poppins_600SemiBold',
+        fontSize: normalizador.widthPercentageToDP('3%'),
         color: 'white'
     },
     descricao: {
-        fontFamily: 'Poppins_600SemiBold', 
-        fontSize: normalizador.widthPercentageToDP('6%'), 
+        fontFamily: 'Poppins_600SemiBold',
+        fontSize: normalizador.widthPercentageToDP('5%'),
         color: 'black'
     },
     txtDescricao: {
-        minHeight: '30%',
-        minWidth: '100%',
-        height: '42%', 
-        borderWidth: 1, 
-        borderRadius: 20, 
+        height: 155,
+        borderWidth: 1,
+        borderRadius: 20,
         padding: 10
     },
     Btn1:{

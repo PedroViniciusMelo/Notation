@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, FlatList, Text } from "react-native";
+import { View, FlatList, Text, SafeAreaView } from "react-native";
 import Estilos from './Styles';
 import BarraSuperior from '../../Recursos/BarraSuperior/Index';
 import Logo from "../../Recursos/Logo/Index";
@@ -21,7 +21,7 @@ export default function HomeScreen() {
     const Navigation = useNavigation();
 
     return (
-        <View style={Estilos.view}>
+        <SafeAreaView style={Estilos.container}>
             <BarraSuperior
                 valor={false}
                 onPress={() => Navigation.dispatch(DrawerActions.openDrawer())}
@@ -33,7 +33,7 @@ export default function HomeScreen() {
                     <FlatList
                         data={pessoas}
                         keyExtractor={item => item.id}
-                        renderItem={({ item }) => <View><Text style={Estilos.nomes}>{item.desc}</Text></View>} 
+                        renderItem={({ item }) => <View><Text style={Estilos.nomes}>{item.desc}</Text></View>}
                         />
                 </View>
                 <View>
@@ -47,7 +47,7 @@ export default function HomeScreen() {
                     <Text style={Estilos.direitos}>2020 direitos reservados</Text>
                 </View>
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 

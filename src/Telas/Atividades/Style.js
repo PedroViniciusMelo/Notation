@@ -3,16 +3,15 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
     container:{
         flex: 1,
-        alignItems: 'center',
+        alignItems: 'stretch',
     },
     containerSecundario: {
-        flex: 1, 
-        padding: '2%', 
-        alignItems: 'center', 
-
+        flex: 1,
+        padding: '1%',
+        alignItems: 'center',
     },
     flatList: {
-        minWidth: '100%'
+        width: '100%'
     },
     btn:{
         backgroundColor: 'blue',

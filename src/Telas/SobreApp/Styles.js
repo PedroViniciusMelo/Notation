@@ -2,15 +2,19 @@ import { StyleSheet } from "react-native";
 import normalizador from "../../Recursos/normalizador";
 
 export default StyleSheet.create({
-    view: {
+    container: {
         flex : 1,
-        alignItems: 'center'
+        alignItems: 'stretch'
     },
     containerSecundario: {
         justifyContent: 'space-between',
-        flex: 1, 
-        padding: '4%', 
-        alignItems: 'center', 
+        flex: 1,
+        padding: '4%',
+        alignItems: 'center',
+    },
+    containerFl: {
+        alignItems: 'center',
+        maxHeight: '30%'
     },
     text: {
         fontFamily: 'Poppins_700Bold',
@@ -38,8 +42,4 @@ export default StyleSheet.create({
         fontWeight : 'bold',
         fontSize: normalizador.widthPercentageToDP('4%')
     },
-    containerFl: {
-        alignItems: 'center', 
-        maxHeight: '30%'
-    }
 });

@@ -3,15 +3,15 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
     mainContainer: {
         flex: 1,
-        alignItems: 'center'
+        alignItems: 'stretch'
     },
     contianerFlatList: {
-        flex: 1, 
-        alignItems: 'center', 
-        padding: '2%'
-     
+        flex: 1,
+        alignItems: 'center',
+        padding: '1%'
+
     },
     flatList: {
-        minWidth: '100%'
+        width: '100%'
     }
 })

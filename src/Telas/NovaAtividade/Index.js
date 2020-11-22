@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Switch, ScrollView } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Switch, ScrollView, SafeAreaView } from "react-native";
 import BarraSuperior from "../../Recursos/BarraSuperior/Index";
 import Estilos from './Styles';
 import Atividades from '../../Services/sqlite/Atividades';
@@ -90,7 +90,7 @@ export default function Cadastro() {
             return alert('Digite a categoria')
         } else {
             Atividades.create({ titulo: titulo, categoria: categoria, descricao: descricao, data: date.toString(), notificar: btn, atrasado: false, concluida: false, dataConcluida: '' })
-                .then(alert('Adicionado com sucesso!'))
+                .then(() => alert('Adicionado com sucesso!'))
                 .catch(err => console.log(err))
             reset()
             NavigateToAtividades()
@@ -99,69 +99,79 @@ export default function Cadastro() {
 
 
     return (
-        <View style={Estilos.mainView}>
+        <SafeAreaView style={Estilos.container}>
             <BarraSuperior
                 conteudo='Nova tarefa'
                 onPress={() => Navigation.dispatch(DrawerActions.openDrawer())}
-                valor={false} 
+                valor={false}
                 />
-            <View style={{minWidth: '100%', maxHeight: '75%',justifyContent: 'center', padding: '1%'}}>
-            <View style={Estilos.secondaryView}>
-                <Text style={Estilos.titulos}>Título da tarefa</Text>
-                <TextInput 
-                    style={Estilos.campos} 
-                    value={titulo} 
-                    onChangeText={text => setTitulo(text)}
-                    />
-                <Text style={Estilos.titulos}>Categoria</Text>
-                <TextInput 
-                    style={Estilos.campos} 
-                    value={categoria} 
-                    onChangeText={categoria => setCategoria(categoria)} 
-                    />
-                <Text style={Estilos.titulos}>Descrição<Text style={Estilos.descricao}> (Opcional)</Text></Text>
-                <TextInput 
-                    style={Estilos.textoInput} 
-                    value={descricao} 
-                    multiline
-                    scrollEnabled={true}
-                    onChangeText={text => setDescricao(text)} 
-                    />
-                <Text style={Estilos.titulos}>Data</Text>
-                <View style={Estilos.data}>
-                    <Feather 
-                        name='calendar' 
-                        color='gold' 
-                        size={normalizador.widthPercentageToDP('4%')} 
-                        />
-                    <TouchableOpacity onPress={showDatepicker}>
-                        <Text style={Estilos.textoData}>{formatData()}</Text>
-                    </TouchableOpacity>
-                    <Feather 
-                        name='clock' 
-                        color='gold' 
-                        size={normalizador.widthPercentageToDP('4%')} 
-                        />
-                    <TouchableOpacity onPress={showTimepicker}>
-                        <Text style={Estilos.textoData}>{formatTime()}</Text>
-                    </TouchableOpacity>
+            <View style={Estilos.containerSecundario}>
+                <View style={Estilos.containerScrollView}>
+                    <ScrollView contentContainerStyle={{minWidth: '100%', minHeight: '100%'}}>
+
+                        <Text style={Estilos.titulos}>Título da tarefa</Text>
+                        <TextInput
+                            style={Estilos.textInput}
+                            value={titulo}
+                            placeholder='Digite o título'
+                            onChangeText={text => setTitulo(text)}
+                            />
+                        <Text style={Estilos.titulos}>Categoria</Text>
+                        <TextInput
+                            style={Estilos.textInput}
+                            value={categoria}
+                            placeholder='Digite a categoria'
+                            onChangeText={categoria => setCategoria(categoria)}
+                            />
+                        <Text style={Estilos.titulos}>Descrição<Text style={Estilos.descricao}> (Opcional)</Text></Text>
+                        <View style={Estilos.mulTxtInput}>
+                            <TextInput
+                                value={descricao}
+                                placeholder='Descrição'
+                                multiline
+                                scrollEnabled={true}
+                                onChangeText={text => setDescricao(text)}
+                            />
+                        </View>
+
+                        <Text style={Estilos.titulos}>Data</Text>
+                        <View style={Estilos.data}>
+                            <Feather
+                                name='calendar'
+                                color='gold'
+                                size={normalizador.widthPercentageToDP('4%')}
+                                />
+                            <TouchableOpacity onPress={showDatepicker}>
+                                <Text style={Estilos.textData}>{formatData()}</Text>
+                            </TouchableOpacity>
+                            <Feather
+                                name='clock'
+                                color='gold'
+                                size={normalizador.widthPercentageToDP('4%')}
+                                />
+                            <TouchableOpacity onPress={showTimepicker}>
+                                <Text style={Estilos.textData}>{formatTime()}</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={Estilos.viewSwitch}>
+                            <Text style={Estilos.notificar}>Noticar</Text>
+                                <Switch
+                                    trackColor={{ false: '#dedede', true: '#3e7fff' }}
+                                    thumbColor={btn ? '#7eaaff' : '#dedede'}
+                                    value={btn}
+                                    onValueChange={() => { setBtn(!btn) }}
+                                    />
+                        </View>
+                    </ScrollView>
+
                 </View>
-                <View style={Estilos.viewSwitch}>
-                    <Text style={Estilos.notificar}>Noticar</Text>
-                    <Switch 
-                        trackColor={{ false: '#dedede', true: '#3e7fff' }} 
-                        thumbColor={btn ? '#7eaaff' : '#dedede'} 
-                        value={btn} 
-                        onValueChange={() => { setBtn(!btn) }} 
-                        />
-                </View>
+                <TouchableOpacity style={Estilos.Btn} onPress={save}>
+                    <Text style={Estilos.textBtn}>Adicionar</Text>
+                </TouchableOpacity>
+                <View/>
             </View>
-            
-            </View>
-            <TouchableOpacity style={Estilos.Btn} onPress={save}>
-                <Text style={Estilos.textBtn}>Adicionar</Text>
-            </TouchableOpacity>
-            
+
+
             {show && (
                 <DateTimePicker
                     minimumDate={new Date}
@@ -173,7 +183,7 @@ export default function Cadastro() {
                     onChange={onChange}
                 />
             )}
-        </View>
+        </SafeAreaView>
     )
 }
 
