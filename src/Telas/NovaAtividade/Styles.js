@@ -35,9 +35,8 @@ export default StyleSheet.create({
         borderRadius: 20
     },
     mulTxtInput : {
-        flex: 0,
         padding: '2%',
-        height: 140,
+        height: normalizador.heightPercentageToDP("23%"),
         borderWidth: 1,
         borderColor: '#d9d9d9',
         borderRadius: 20

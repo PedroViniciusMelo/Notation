@@ -120,12 +120,12 @@ export default function Index(props) {
                 <View style={Estilos.containerFatList}>
                     <ScrollView contentContainerStyle={{minHeight: '100%', minWidth: '100%'}}>
                         <View style={Estilos.contanierTituloAtividade}>
-                                <TextInput
-                                    value={titulo}
-                                    onChangeText={text => setTitulo(text)}
-                                    editable={editavel}
-                                    style={{color: 'black', marginBottom: 20, maxWidth: '80%', fontSize: normalizador.widthPercentageToDP('6%'), fontFamily: 'Poppins_700Bold'}}
-                                />
+                            <TextInput
+                                value={titulo}
+                                onChangeText={text => setTitulo(text)}
+                                editable={editavel}
+                                style={{color: 'black', marginBottom: 20, maxWidth: '80%', fontSize: normalizador.widthPercentageToDP('6%'), fontFamily: 'Poppins_700Bold'}}
+                            />
 
                             <TouchableOpacity onPress={() => setEditavel(!editavel)} >
                                 <Feather

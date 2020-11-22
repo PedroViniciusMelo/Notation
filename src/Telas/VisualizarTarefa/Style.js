@@ -66,7 +66,7 @@ export default StyleSheet.create({
         color: 'black'
     },
     txtDescricao: {
-        height: 155,
+        height: normalizador.heightPercentageToDP("21%"),
         borderWidth: 1,
         borderRadius: 20,
         padding: 10
