@@ -4,13 +4,12 @@ import { createDrawerNavigator, DrawerItem } from "@react-navigation/drawer";
 import DrawerSection from "react-native-paper/src/components/Drawer/DrawerSection";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import Estilos from './Styles';
-import LogoSvg from '../../../assets/Logo/Logo.svg'
+import LogoSvg from '../../../assets/Logo/Logo.svg';
 import Atividades from "../../Telas/Atividades/Index";
-import NovaAtividade from "../../Telas/NovaAtividade/Index";
+import Calendario from '../../Telas/Calendário/Index';
 import SobreApp from "../../Telas/SobreApp/Index";
 import StackNavigator from '../StackNavigator/Index';
 import Historico from '../../Telas/Histórico/Index';
-import SplashScreen from '../../Telas/TelaDeInicio/Index';
 
 export default function Drawer() {
     const SideBar = createDrawerNavigator();
@@ -18,7 +17,7 @@ export default function Drawer() {
         <SideBar.Navigator drawerContent={(props) => <CustomDrawerNavigator {...props} />}>
             <SideBar.Screen name={'main'} component={StackNavigator} />
             <SideBar.Screen name={'Atividades'} component={AtividadesF} />
-            <SideBar.Screen name={'Calendário'} component={Cadastro} />
+            <SideBar.Screen name={'Calendário'} component={CalendarioF} />
             <SideBar.Screen name={'Histórico'} component={HistoricoF} />
             <SideBar.Screen name={'Sobre o App'} component={SobreAppF} />
         </SideBar.Navigator>
@@ -39,9 +38,9 @@ export default function Drawer() {
             <Historico/>
         )
     }
-    function Cadastro() {
+    function CalendarioF() {
         return (
-            <SplashScreen/>
+            <Calendario/>
         )
     }
 

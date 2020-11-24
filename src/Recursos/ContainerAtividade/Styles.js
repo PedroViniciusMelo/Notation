@@ -4,9 +4,9 @@ import normalizador from "../normalizador";
 export default StyleSheet.create({
     container: {
         flex: 1,
-        marginBottom: '1.5%',
+        marginVertical: '1%',
         padding: '2%',
-        borderWidth: 0.5,
+        elevation: 5,
         borderRadius: 20,
         backgroundColor: '#FFF',
     },
