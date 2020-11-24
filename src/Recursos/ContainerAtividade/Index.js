@@ -50,7 +50,7 @@ export default function Container(props){
             disabled={props.obj.concluida}
             style={Estilos.container} 
             onPress={NavigateToVisualizarAtividade}>
-            <View style={{maxWidth: '80%'}}>
+            <View style={{maxWidth: '75%'}}>
                 <Text style={Estilos.texto}>{props.obj.titulo}</Text>
             </View>
             <View style={Estilos.containerS}>

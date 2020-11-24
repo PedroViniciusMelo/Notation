@@ -8,7 +8,10 @@ import Categorias from "../../../assets/Barra/Categorias.svg";
 export default function (props) {
     return (
         <View style={Estilos.container}>
-            <TouchableOpacity onPress={props.onPress}>
+            <TouchableOpacity 
+                onPress={props.onPress}
+                hitSlop={{top: 20, left: 20, right: 20, bottom: 20}}
+                >
                 <Barra/>
             </TouchableOpacity>
             <Text style={Estilos.text}>{props.conteudo}</Text>

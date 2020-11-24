@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import BarraSuperior from '../../Recursos/BarraSuperior/Index';
-import { View, TouchableOpacity, FlatList, SafeAreaView } from "react-native";
+import { View, TouchableOpacity, FlatList, StatusBar } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import ContainerAtividade from '../../Recursos/ContainerAtividade/Index';
 import Estilos from './Style';
@@ -18,7 +18,8 @@ export default function home() {
     }
 
     return (
-        <SafeAreaView style={Estilos.container}>
+        <View style={Estilos.container}>
+            <StatusBar backgroundColor='#006EFF'/>
             <BarraSuperior
                 conteudo='Atividades'
                 onPress={() => Navigation.dispatch(DrawerActions.openDrawer())}
@@ -34,16 +35,16 @@ export default function home() {
                             obj={item}
                             />}
                     />
-            <TouchableOpacity
-                style={Estilos.btn}
-                onPress={NavigateToCreatActivity}>
-                <Feather
-                    name='plus'
-                    size={60}
-                    color='white' />
-            </TouchableOpacity>
+                <TouchableOpacity
+                    style={Estilos.btn}
+                    onPress={NavigateToCreatActivity}>
+                    <Feather
+                        name='plus'
+                        size={60}
+                        color='white' />
+                </TouchableOpacity>
             </View>
-
-        </SafeAreaView>
+        </View>
+        
     )
 }

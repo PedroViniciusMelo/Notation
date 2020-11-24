@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Switch, ScrollView, SafeAreaView } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Switch, ScrollView, StatusBar } from "react-native";
 import BarraSuperior from "../../Recursos/BarraSuperior/Index";
 import Estilos from './Styles';
 import Atividades from '../../Services/sqlite/Atividades';
@@ -99,7 +99,8 @@ export default function Cadastro() {
 
 
     return (
-        <SafeAreaView style={Estilos.container}>
+        <View style={Estilos.container}>
+            <StatusBar backgroundColor='#006EFF'/>
             <BarraSuperior
                 conteudo='Nova tarefa'
                 onPress={() => Navigation.dispatch(DrawerActions.openDrawer())}
@@ -183,7 +184,7 @@ export default function Cadastro() {
                     onChange={onChange}
                 />
             )}
-        </SafeAreaView>
+        </View>
     )
 }
 

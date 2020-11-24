@@ -16,8 +16,9 @@ export default StyleSheet.create({
         elevation: 10,
         borderRadius: 20,
         backgroundColor: 'white',
-        margin: '3%',
-        maxHeight: '80%'
+        marginHorizontal: '2%',
+        marginTop: '2%',
+        maxHeight: '81%'
     },
     titulos: {
         fontFamily: 'Poppins_700Bold',
@@ -36,7 +37,7 @@ export default StyleSheet.create({
     },
     mulTxtInput : {
         padding: '2%',
-        height: normalizador.heightPercentageToDP("23%"),
+        height: normalizador.heightPercentageToDP("18%"),
         borderWidth: 1,
         borderColor: '#d9d9d9',
         borderRadius: 20

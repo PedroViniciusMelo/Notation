@@ -3,6 +3,7 @@ import normalizador from "../normalizador";
 
 export default StyleSheet.create({
     container: {
+        justifyContent: 'space-between',
         flex: 1,
         marginVertical: '1%',
         padding: '2%',
@@ -19,6 +20,7 @@ export default StyleSheet.create({
         justifyContent: 'space-between',
     },
     categoria: {
+        maxWidth: '50%',
         padding: '1.5%',
         alignItems: 'center',
         justifyContent: 'center',

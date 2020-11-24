@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { Agenda } from "react-native-calendars";
-import { View } from "react-native";
+import { View, StatusBar } from "react-native";
 import BarraSuperior from '../../Recursos/BarraSuperior/Index';
 import Atividades from "../../Services/sqlite/Atividades";
 import ContainerAtividades from '../../Recursos/ContainerAtividade/Index';
+import { useNavigation, DrawerActions } from '@react-navigation/native';
 
 export default function (){
     const [atividades, setAtividade] = useState(Atividades.all().then(a => reformatAtividades(a)))
-
+    const Navigation = useNavigation()
 
     const formatData = (data) => {
         let date = new Date(data)
@@ -46,9 +47,12 @@ export default function (){
     
     return(
         <View style={{flex: 1}}>
+            <StatusBar backgroundColor='#006EFF'/>
             <BarraSuperior
                 conteudo='Calendário'
-                valor={false}/>
+                valor={false}
+                onPress={() => Navigation.dispatch(DrawerActions.openDrawer())}
+                />
             <View style={{flex: 1}}>
                 <Agenda
                     style={{flex: 1}}

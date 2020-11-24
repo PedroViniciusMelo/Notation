@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import BarraSuperior from '../../Recursos/BarraSuperior/Index';
-import { View, TouchableOpacity, Text, TextInput, ScrollView, SafeAreaView } from 'react-native';
+import { View, TouchableOpacity, Text, TextInput, ScrollView, StatusBar } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import Estilos from './Style';
 import normalizador from "../../Recursos/normalizador";
@@ -111,7 +111,8 @@ export default function Index(props) {
 
 
     return (
-        <SafeAreaView style={Estilos.container}>
+        <View style={Estilos.container}>
+            <StatusBar backgroundColor='#006EFF'/>
             <BarraSuperior
                 valor={false}
                 conteudo='Visualizar'
@@ -225,7 +226,7 @@ export default function Index(props) {
                         onChange={onChange}
                         />)}
             </View>
-        </SafeAreaView>
+        </View>
     )
 }
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import BarraSuperior from '../../Recursos/BarraSuperior/Index';
-import { View, FlatList, SafeAreaView } from "react-native";
+import { View, FlatList, StatusBar } from "react-native";
 import ContainerAtividade from '../../Recursos/ContainerAtividade/Index';
 import Atividades from '../../Services/sqlite/Atividades';
 import { useNavigation, DrawerActions } from '@react-navigation/native';
@@ -11,7 +11,8 @@ export default function historico(){
     const Navigation = useNavigation()
 
     return(
-        <SafeAreaView style={Estilos.mainContainer}>
+        <View style={Estilos.mainContainer}>
+            <StatusBar backgroundColor='#006EFF'/>
             <BarraSuperior
                 valor={false}
                 conteudo='Histórico'
@@ -28,7 +29,7 @@ export default function historico(){
                             />}
                     />
             </View>
-        </SafeAreaView>
+        </View>
     )
 }
 
