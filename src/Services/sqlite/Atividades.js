@@ -6,9 +6,9 @@ import db from "./SQLiteDatabse";
  */
 db.transaction((tx) => {
   
-  //tx.executeSql("DROP TABLE atividades;"); //Deleta a tabela
+  tx.executeSql("DROP TABLE atividades;"); //Deleta a tabela
   tx.executeSql(
-    "CREATE TABLE IF NOT EXISTS atividades (id INTEGER PRIMARY KEY AUTOINCREMENT, titulo TEXT, categoria TEXT, descricao TEXT, data TEXT, notificar TEXT, atrasado TEXT, concluida TXT, dataConcluida TXT);" //Cria a tabela se ela não existir
+    "CREATE TABLE IF NOT EXISTS atividades (id INTEGER PRIMARY KEY AUTOINCREMENT, titulo TEXT, categoria TEXT, descricao TEXT, data TEXT, notificar TEXT, atrasado TEXT, concluida TEXT, dataConcluida TEXT);" //Cria a tabela se ela não existir
   );
 });
 

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Switch, ScrollView, StatusBar } from "react-native";
+import React, { useState, useEffect, useRef } from 'react';
+import { View, Text, TextInput, TouchableOpacity, Switch, ScrollView, StatusBar, Platform } from "react-native";
 import BarraSuperior from "../../Recursos/BarraSuperior/Index";
 import Estilos from './Styles';
 import Atividades from '../../Services/sqlite/Atividades';
@@ -7,6 +7,11 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { Feather } from '@expo/vector-icons';
 import normalizador from '../../Recursos/normalizador';
 import { useNavigation, DrawerActions } from '@react-navigation/native';
+import Constants from 'expo-constants';
+import * as Notifications from 'expo-notifications';
+import * as Permissions from 'expo-permissions';
+
+
 
 export default function Cadastro() {
     //Define os dados do CRUD
@@ -15,18 +20,17 @@ export default function Cadastro() {
     const [descricao, setDescricao] = useState('')
     const [btn, setBtn] = useState(false)
     const [date, setDate] = useState(new Date());
+    
 
     //Métodos do DateTimePicker
     const [mode, setMode] = useState('date');
     const [show, setShow] = useState(false);
 
-    const Navigation = useNavigation()
-
-    // Navigation.dispatch(DrawerActions.openDrawer())
-
+    const Navigation = useNavigation();
     function NavigateToAtividades() {
         Navigation.navigate('Atividades')
     }
+
 
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate || date;
@@ -81,21 +85,106 @@ export default function Cadastro() {
         setDescricao(' ');
         setDate(new Date());
     }
-    //Passa os dados para o CRUD
+    //Passa os dados para o Banco de dados
+    function dados(IdFinal){
+    
+        function createThen(){
+            alert('Adicionado com sucesso!')
+            reset()
+            NavigateToAtividades()
+        }
+
+        Atividades.create({ titulo: titulo, categoria: categoria, descricao: descricao, data: date.toString(), notificar: IdFinal, atrasado: false, concluida: false, dataConcluida: '' })
+                .then(createThen())
+                .catch(err => console.log(err))
+    }
+    
     const save = () => {
         //Verifica se nenhum dos campos obrigatórios estão vazios, se não, é passado os dados para o banco de dados e o usuário é retornardo para a tela de Atividades. Se algum campo estiver vazio, será retornado um Alert
+        async function alertar(){
+            await schedulePushNotification()
+        }
+        
         if (titulo === '' || titulo === ' ') {
             return alert('Digite o Titulo')
         } else if (categoria === '' || categoria === ' ') {
             return alert('Digite a categoria')
         } else {
-            Atividades.create({ titulo: titulo, categoria: categoria, descricao: descricao, data: date.toString(), notificar: btn, atrasado: false, concluida: false, dataConcluida: '' })
-                .then(() => alert('Adicionado com sucesso!'))
-                .catch(err => console.log(err))
-            reset()
-            NavigateToAtividades()
+            if(btn){
+                alertar()
+            }else{
+                dados('')
+            } 
         }
     }
+    //-=-=-==-=-=-=-=-=-=-=-=-=-=-=--= Métodos para a implemetação das notificações =-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+    const notificationListener = useRef();
+    const responseListener = useRef();
+
+    Notifications.setNotificationHandler({
+        handleNotification: async () => ({
+            shouldShowAlert: true,
+            shouldPlaySound: false,
+            shouldSetBadge: false,
+        }),
+        });
+
+    useEffect(() => {
+        registerForPushNotificationsAsync();
+
+        notificationListener.current = Notifications.addNotificationReceivedListener();
+
+        responseListener.current = Notifications.addNotificationResponseReceivedListener();
+
+        return () => {
+        Notifications.removeNotificationSubscription(notificationListener);
+        Notifications.removeNotificationSubscription(responseListener);
+        };
+    }, []);
+    
+
+    async function schedulePushNotification() {
+        await Notifications.scheduleNotificationAsync({
+            content: {
+            title: "You've got mail! 📬",
+            body: 'Here is the notification body',
+            data: { data: 'goes here' },
+            },
+            trigger: { seconds: 10 },
+        }).then(idNote => dados(idNote))
+    }
+
+    async function registerForPushNotificationsAsync() {
+    let token;
+    if (Constants.isDevice) {
+        const { status: existingStatus } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
+        let finalStatus = existingStatus;
+        if (existingStatus !== 'granted') {
+        const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+        finalStatus = status;
+        }
+        if (finalStatus !== 'granted') {
+        alert('Failed to get push token for push notification!');
+        return;
+        }
+        token = (await Notifications.getExpoPushTokenAsync()).data;
+        console.log(token);
+    } else {
+        alert('Must use physical device for Push Notifications');
+    }
+
+    if (Platform.OS === 'android') {
+        Notifications.setNotificationChannelAsync('default', {
+        name: 'default',
+        importance: Notifications.AndroidImportance.MAX,
+        vibrationPattern: [0, 250, 250, 250],
+        lightColor: '#FF231F7C',
+        });
+    }
+    return token;
+    }
+
 
 
     return (

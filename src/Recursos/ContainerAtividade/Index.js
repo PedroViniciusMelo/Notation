@@ -6,6 +6,11 @@ import Estilos from './Styles';
 import { useNavigation } from '@react-navigation/native';
 
 export default function Container(props){
+    if (props.obj.concluida === '1'){
+        props.obj.concluida = true
+    }else{
+        props.obj.concluida = false
+    }
 
     const Navigation = useNavigation()
 

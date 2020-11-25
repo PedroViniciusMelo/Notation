@@ -7,12 +7,16 @@ import normalizador from "../../Recursos/normalizador";
 import { useNavigation, DrawerActions } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import Atividades from '../../Services/sqlite/Atividades';
+import * as Notifications from 'expo-notifications';
 
 
 
 export default function Index(props) {
     //ID da atividade
     let id = props.route.params.id
+    let idNotification = props.route.params.notificar
+    console.log(props)
+
 
     //Dados da atividade
     const [data, setData] = useState(new Date(props.route.params.data))
@@ -90,17 +94,36 @@ export default function Index(props) {
     }
     //Deletar atividade
     const deletar = () =>{
+
+        function removeThen(){
+            async function removeNotification(){
+                await Notifications.cancelScheduledNotificationAsync(idNotification)
+            }
+            removeNotification()
+            alert('Removido com sucesso!')
+            NavigateToAtividades()
+        }
+
+
         Atividades.remove(id)
-            .then(() => alert('Removido com sucesso!'))
+            .then(removeThen())
             .catch(err => console.log(err))
-        NavigateToAtividades()
     }
     //Colocar o campo concluida como True
     const setConcluida = () => {
+
+        function updateThen(){
+            async function removeNotification(){
+                await Notifications.cancelScheduledNotificationAsync(idNotification)
+            }
+            removeNotification()
+            alert('Adicionada como concluida!')
+            NavigateToAtividades()
+        }
+
         Atividades.update(id, {titulo: titulo, categoria: categoria, descricao: descricao, data: data.toString(), atrasado: props.route.params.atrasado, notificar: props.route.params.notificar , concluida: true, dataConcluida: new Date().toString()})
-            .then(() => alert('Adicionada como concluida!'))
+            .then(updateThen())
             .catch(err => console.log(err))
-        NavigateToAtividades()
     }
     //Método de navegação para tela inicial
     const Navigation = useNavigation()
@@ -108,7 +131,6 @@ export default function Index(props) {
     function NavigateToAtividades() {
         Navigation.navigate('Atividades')
     }
-
 
     return (
         <View style={Estilos.container}>
