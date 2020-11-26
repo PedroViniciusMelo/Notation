@@ -15,7 +15,7 @@ export default function (props) {
                 <Barra/>
             </TouchableOpacity>
             <Text style={Estilos.text}>{props.conteudo}</Text>
-            {props.valor ? <Categorias/> : <View />/*Ternário para definir se será usado o ícone de filtros*/}
+            {props.valor ? <TouchableOpacity onPress={props.onPress2}><Categorias/></TouchableOpacity> : <View />/*Ternário para definir se será usado o ícone de filtros*/}
         </View>
     )
 }

@@ -15,7 +15,6 @@ export default function Index(props) {
     //ID da atividade
     let id = props.route.params.id
     let idNotification = props.route.params.notificar
-    console.log(props)
 
 
     //Dados da atividade
@@ -86,7 +85,7 @@ export default function Index(props) {
         } else if (categoria === '' || categoria === ' ') {
             return alert('Digite a categoria')
         } else {
-            Atividades.update(id, { titulo: titulo, categoria: categoria, descricao: descricao, data: data.toString(), atrasado: props.route.params.atrasado, concluida: props.route.params.concluida, dataConluida: props.route.params.dataConluida, notificar: props.route.params.notificar })
+            Atividades.update(id, { ...props.route.params, titulo: titulo, categoria: categoria, descricao: descricao, data: data.toString() })
                 .then(() => alert('Atualizado com sucesso!'))
                 .catch(err => console.log(err))
             NavigateToAtividades()
@@ -121,7 +120,7 @@ export default function Index(props) {
             NavigateToAtividades()
         }
 
-        Atividades.update(id, {titulo: titulo, categoria: categoria, descricao: descricao, data: data.toString(), atrasado: props.route.params.atrasado, notificar: props.route.params.notificar , concluida: true, dataConcluida: new Date().toString()})
+        Atividades.update(id, { ...props.route.params, concluida: true, dataConcluida: new Date().toString(), atrasado: false})
             .then(updateThen())
             .catch(err => console.log(err))
     }
@@ -150,7 +149,10 @@ export default function Index(props) {
                                 style={{color: 'black', marginBottom: 20, maxWidth: '80%', fontSize: normalizador.widthPercentageToDP('6%'), fontFamily: 'Poppins_700Bold'}}
                             />
 
-                            <TouchableOpacity onPress={() => setEditavel(!editavel)} >
+                            <TouchableOpacity 
+                                onPress={() => setEditavel(!editavel)} 
+                                hitSlop={{top: 20, left: 20, right: 20, bottom: 20}}
+                                >
                                 <Feather
                                     name='edit'
                                     size={normalizador.widthPercentageToDP('6%')}/>
@@ -174,7 +176,9 @@ export default function Index(props) {
                                 />
                             <TouchableOpacity
                                 onPress={showDatepicker}
-                                disabled={!editavel}>
+                                disabled={!editavel}
+                                hitSlop={{top: 20, left: 20, right: 20, bottom: 20}}
+                                >
                                 <Text style={Estilos.txtData}>{formatData()}</Text>
                             </TouchableOpacity>
                             <Feather
@@ -184,7 +188,9 @@ export default function Index(props) {
                                 />
                             <TouchableOpacity
                                 onPress={showTimepicker}
-                                disabled={!editavel}>
+                                disabled={!editavel}
+                                hitSlop={{top: 20, left: 20, right: 20, bottom: 20}}
+                                >
                                 <Text style={Estilos.txtData}>{formatTime()}</Text>
                             </TouchableOpacity>
                         </View>

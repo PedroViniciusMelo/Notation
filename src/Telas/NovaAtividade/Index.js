@@ -145,13 +145,15 @@ export default function Cadastro() {
     
 
     async function schedulePushNotification() {
+        const trigger = date
+        trigger.setSeconds(0);
         await Notifications.scheduleNotificationAsync({
             content: {
-            title: "You've got mail! 📬",
-            body: 'Here is the notification body',
+            title: "Olá, você tem uma nova atividade! ⌛",
+            body: `Não esqueça, ${titulo}`,
             data: { data: 'goes here' },
             },
-            trigger: { seconds: 10 },
+            trigger
         }).then(idNote => dados(idNote))
     }
 

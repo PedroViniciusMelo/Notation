@@ -7,8 +7,21 @@ import ContainerAtividades from '../../Recursos/ContainerAtividade/Index';
 import { useNavigation, DrawerActions } from '@react-navigation/native';
 
 export default function (){
-    const [atividades, setAtividade] = useState(Atividades.all().then(a => reformatAtividades(a)))
+    const [atividades, setAtividade] = useState(Atividades.all().then(a => update(a)))
+
     const Navigation = useNavigation()
+
+    function update(atividade){
+        let array = []
+        atividade.forEach(element => {
+            if(new Date(element.data) < new Date()){
+                array.push({...element, atrasado: true})
+            }else{
+                array.push({...element, atrasado: false})
+            }
+        })
+        reformatAtividades(array)
+    }
 
     const formatData = (data) => {
         let date = new Date(data)
@@ -33,9 +46,9 @@ export default function (){
             let hold = element.data
             let data = formatData(hold)
             if (data in retorno){
-                retorno[data].push({'titulo' : element.titulo, 'categoria' : element.categoria, 'descricao' : element.descricao, 'data' : element.data, 'concluida': element.concluida, 'dataConcluida': element.dataConcluida})
+                retorno[data].push(element)
             }else{
-                retorno[data] = [{'titulo' : element.titulo, 'categoria' : element.categoria, 'descricao' : element.descricao, 'data' : element.data, 'concluida': element.concluida, 'dataConcluida': element.dataConcluida}]
+                retorno[data] = [element]
             }
         })
         setAtividade(retorno)

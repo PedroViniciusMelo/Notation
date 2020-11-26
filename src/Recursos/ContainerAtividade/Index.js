@@ -63,10 +63,14 @@ export default function Container(props){
                     <Text style={Estilos.textoCategoria}>{props.obj.categoria}</Text>
                 </View>
                 <View style={Estilos.data}>
-                    <View style={{flexDirection: 'row'}}>
+                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
                         {props.obj.concluida ? 
                             <Text style={Estilos.textoData2}>Atividade concluida em </Text> 
-                            : 
+                            :
+                            props.obj.atrasado ? <View style={{flexDirection: 'row', justifyContent: "center", alignItems: 'center'}}>
+                                <Text style={{fontSize: normalizador.widthPercentageToDP('3%'), marginRight: 10, backgroundColor: 'red', color: 'white', padding: 3, borderRadius: 10}}>Atrasada</Text>
+                                <Feather name='alert-triangle' size={normalizador.widthPercentageToDP('5%')} color='red'/>
+                                </View> :
                             <Feather 
                                 name='calendar' 
                                 color='black' 
