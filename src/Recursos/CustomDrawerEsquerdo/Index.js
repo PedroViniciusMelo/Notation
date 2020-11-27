@@ -17,33 +17,12 @@ export default function Drawer() {
     return (
         <SideBar.Navigator drawerContent={(props) => <CustomDrawerNavigator {...props} />}>
             <SideBar.Screen name={'main'} component={StackNavigator} />
-            <SideBar.Screen name={'Atividades'} component={AtividadesF} />
-            <SideBar.Screen name={'Calendário'} component={CalendarioF} />
-            <SideBar.Screen name={'Histórico'} component={HistoricoF} />
-            <SideBar.Screen name={'Sobre o App'} component={SobreAppF} />
+            <SideBar.Screen name={'Atividades'} component={Atividades} />
+            <SideBar.Screen name={'Calendário'} component={Calendario} />
+            <SideBar.Screen name={'Histórico'} component={Historico} />
+            <SideBar.Screen name={'Sobre o App'} component={SobreApp} />
         </SideBar.Navigator>
     )
-    //Rotas das aplicações
-    function AtividadesF() {
-        return (
-            <Atividades/>
-        )
-    }
-    function SobreAppF() {
-        return (
-            <SobreApp/>
-        )
-    }
-    function HistoricoF() {
-        return (
-            <Historico/>
-        )
-    }
-    function CalendarioF() {
-        return (
-            <Calendario/>
-        )
-    }
 
     function CustomDrawerNavigator(props) {
         return (

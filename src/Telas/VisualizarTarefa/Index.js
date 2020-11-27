@@ -128,7 +128,8 @@ export default function Index(props) {
     const Navigation = useNavigation()
 
     function NavigateToAtividades() {
-        Navigation.navigate('Atividades')
+        //Navigation.navigate('Atividades')
+        Navigation.goBack()
     }
 
     return (
