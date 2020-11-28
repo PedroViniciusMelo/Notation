@@ -8,8 +8,9 @@ import Atividades from '../../Services/sqlite/Atividades';
 import { useNavigation, DrawerActions } from '@react-navigation/native';
 
 
-export default function home() {
+export default function home(props) {
     const [atividades, setAtividades] = useState(Atividades.findByConcluded('0').then(a => update(a)))
+  
 
     function update(atividade){
         let array = []
@@ -22,8 +23,8 @@ export default function home() {
         })
         setAtividades(array)
     }
- 
-    
+
+
 
     const Navigation = useNavigation()
     //StackNavigator, usado no botão de adicionar tarefa pra que quando clicado seja aberto o componente de NovaAtividade

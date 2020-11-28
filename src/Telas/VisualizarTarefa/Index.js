@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import BarraSuperior from '../../Recursos/BarraSuperior/Index';
 import { View, TouchableOpacity, Text, TextInput, ScrollView, StatusBar } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import Estilos from './Style';
 import normalizador from "../../Recursos/normalizador";
-import { useNavigation, DrawerActions } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import Atividades from '../../Services/sqlite/Atividades';
 import * as Notifications from 'expo-notifications';
@@ -135,10 +134,6 @@ export default function Index(props) {
     return (
         <View style={Estilos.container}>
             <StatusBar backgroundColor='#006EFF'/>
-            <BarraSuperior
-                valor={false}
-                conteudo='Visualizar'
-                onPress={() => Navigation.dispatch(DrawerActions.openDrawer())} />
             <View style={Estilos.containerSecundario}>
                 <View style={Estilos.containerFatList}>
                     <ScrollView contentContainerStyle={{minHeight: '100%', minWidth: '100%'}}>
@@ -150,8 +145,8 @@ export default function Index(props) {
                                 style={{color: 'black', marginBottom: 20, maxWidth: '80%', fontSize: normalizador.widthPercentageToDP('6%'), fontFamily: 'Poppins_700Bold'}}
                             />
 
-                            <TouchableOpacity 
-                                onPress={() => setEditavel(!editavel)} 
+                            <TouchableOpacity
+                                onPress={() => setEditavel(!editavel)}
                                 hitSlop={{top: 20, left: 20, right: 20, bottom: 20}}
                                 >
                                 <Feather

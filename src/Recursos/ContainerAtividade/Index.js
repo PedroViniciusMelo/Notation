@@ -6,16 +6,12 @@ import Estilos from './Styles';
 import { useNavigation } from '@react-navigation/native';
 
 export default function Container(props){
-    if (props.obj.concluida === '1'){
-        props.obj.concluida = true
-    }else{
-        props.obj.concluida = false
-    }
+    props.obj.concluida = props.obj.concluida === '1';
 
     const Navigation = useNavigation()
-
     //StackNavigator, usado no container para que quando ele seja clicado seja aberto o componente de visualizarTarefa
     function NavigateToVisualizarAtividade(){
+
         Navigation.navigate('VisualizarAtividade', props.obj)
     }
 
@@ -32,7 +28,7 @@ export default function Container(props){
         if (mes.toString().length === 1){
             mes = '0' + mes
         }
-        
+
         return dia + '/'+ mes + '/' + ano
     }
     //Formata as horas e minutos que vão ser mostrados no campo data. No momento a função não está sendo usada, porém pode ser implementada se necessário.
@@ -51,9 +47,9 @@ export default function Container(props){
     }*/
 
     return(
-        <TouchableOpacity 
+        <TouchableOpacity
             disabled={props.obj.concluida}
-            style={Estilos.container} 
+            style={Estilos.container}
             onPress={NavigateToVisualizarAtividade}>
             <View style={{maxWidth: '75%'}}>
                 <Text style={Estilos.texto}>{props.obj.titulo}</Text>
@@ -64,16 +60,16 @@ export default function Container(props){
                 </View>
                 <View style={Estilos.data}>
                     <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                        {props.obj.concluida ? 
-                            <Text style={Estilos.textoData2}>Atividade concluida em </Text> 
+                        {props.obj.concluida ?
+                            <Text style={Estilos.textoData2}>Atividade concluida em </Text>
                             :
                             props.obj.atrasado ? <View style={{flexDirection: 'row', justifyContent: "center", alignItems: 'center'}}>
                                 <Text style={{fontSize: normalizador.widthPercentageToDP('3%'), marginRight: 10, backgroundColor: 'red', color: 'white', padding: 3, borderRadius: 10}}>Atrasada</Text>
                                 <Feather name='alert-triangle' size={normalizador.widthPercentageToDP('5%')} color='red'/>
                                 </View> :
-                            <Feather 
-                                name='calendar' 
-                                color='black' 
+                            <Feather
+                                name='calendar'
+                                color='black'
                                 size={normalizador.widthPercentageToDP('5%')}
                                 />}
                         <Text style={Estilos.textoData}>{formatData()}</Text>

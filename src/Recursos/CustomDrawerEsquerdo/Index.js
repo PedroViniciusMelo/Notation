@@ -6,19 +6,38 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import Estilos from './Styles';
 import LogoSvg from '../../../assets/Logo/Logo.svg';
 import Atividades from "../../Telas/Atividades/Index";
-import Calendario from '../../Telas/Calendário/Index';
+import Calendario from '../StackNavigatorCalendario/Index';
 import SobreApp from "../../Telas/SobreApp/Index";
 import StackNavigator from '../StackNavigator/Index';
 import Historico from '../../Telas/Histórico/Index';
 import DrawerNavigatorDireito from '../CustomDrawerDireito/Index';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native'
 
 export default function Drawer() {
     const SideBar = createDrawerNavigator();
+
+    function getHeaderTitle(route) {
+        const routeName = getFocusedRouteNameFromRoute(route)
+
+        switch (routeName){
+            case 'CriarNovaAtividade':
+                return false
+            case 'VisualizarAtividade':
+                return false
+            case 'Atividades':
+                return true
+            case 'Calendário':
+                return true
+        }
+    }
     return (
         <SideBar.Navigator drawerContent={(props) => <CustomDrawerNavigator {...props} />}>
-            <SideBar.Screen name={'main'} component={StackNavigator} />
-            <SideBar.Screen name={'Atividades'} component={Atividades} />
-            <SideBar.Screen name={'Calendário'} component={Calendario} />
+            <SideBar.Screen name={'main'} component={StackNavigator} options={({route}) => ({
+                gestureEnabled: getHeaderTitle(route)
+            })}/>
+            <SideBar.Screen name={'Calendário'} component={Calendario} options={({route}) => ({
+                gestureEnabled: getHeaderTitle(route)
+            })}/>
             <SideBar.Screen name={'Histórico'} component={Historico} />
             <SideBar.Screen name={'Sobre o App'} component={SobreApp} />
         </SideBar.Navigator>

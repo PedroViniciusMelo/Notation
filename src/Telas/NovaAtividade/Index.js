@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Switch, ScrollView, StatusBar, Platform } from "react-native";
-import BarraSuperior from "../../Recursos/BarraSuperior/Index";
 import Estilos from './Styles';
 import Atividades from '../../Services/sqlite/Atividades';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Feather } from '@expo/vector-icons';
 import normalizador from '../../Recursos/normalizador';
-import { useNavigation, DrawerActions } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import Constants from 'expo-constants';
 import * as Notifications from 'expo-notifications';
 import * as Permissions from 'expo-permissions';
@@ -20,7 +19,7 @@ export default function Cadastro() {
     const [descricao, setDescricao] = useState('')
     const [btn, setBtn] = useState(false)
     const [date, setDate] = useState(new Date());
-    
+
 
     //Métodos do DateTimePicker
     const [mode, setMode] = useState('date');
@@ -87,7 +86,7 @@ export default function Cadastro() {
     }
     //Passa os dados para o Banco de dados
     function dados(IdFinal){
-    
+
         function createThen(){
             alert('Adicionado com sucesso!')
             reset()
@@ -98,13 +97,13 @@ export default function Cadastro() {
                 .then(createThen())
                 .catch(err => console.log(err))
     }
-    
+
     const save = () => {
         //Verifica se nenhum dos campos obrigatórios estão vazios, se não, é passado os dados para o banco de dados e o usuário é retornardo para a tela de Atividades. Se algum campo estiver vazio, será retornado um Alert
         async function alertar(){
             await schedulePushNotification()
         }
-        
+
         if (titulo === '' || titulo === ' ') {
             return alert('Digite o Titulo')
         } else if (categoria === '' || categoria === ' ') {
@@ -114,7 +113,7 @@ export default function Cadastro() {
                 alertar()
             }else{
                 dados('')
-            } 
+            }
         }
     }
     //-=-=-==-=-=-=-=-=-=-=-=-=-=-=--= Métodos para a implemetação das notificações =-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -142,7 +141,7 @@ export default function Cadastro() {
         Notifications.removeNotificationSubscription(responseListener);
         };
     }, []);
-    
+
 
     async function schedulePushNotification() {
         const trigger = date
@@ -192,11 +191,6 @@ export default function Cadastro() {
     return (
         <View style={Estilos.container}>
             <StatusBar backgroundColor='#006EFF'/>
-            <BarraSuperior
-                conteudo='Nova tarefa'
-                onPress={() => Navigation.dispatch(DrawerActions.openDrawer())}
-                valor={false}
-                />
             <View style={Estilos.containerSecundario}>
                 <View style={Estilos.containerScrollView}>
                     <ScrollView contentContainerStyle={{minWidth: '100%', minHeight: '100%'}}>
