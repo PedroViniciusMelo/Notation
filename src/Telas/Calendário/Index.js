@@ -63,7 +63,7 @@ export default function (){
             <StatusBar backgroundColor='#006EFF'/>
             <BarraSuperior
                 conteudo='Calendário'
-                valor={false}
+                filtro={false}
                 onPress={() => Navigation.dispatch(DrawerActions.openDrawer())}
                 />
             <View style={{flex: 1}}>

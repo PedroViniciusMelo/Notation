@@ -10,6 +10,8 @@ import Constants from 'expo-constants';
 import * as Notifications from 'expo-notifications';
 import * as Permissions from 'expo-permissions';
 
+import BarraSuperior from '../../Recursos/BarraSuperior/Index'
+
 
 
 export default function Cadastro() {
@@ -191,6 +193,12 @@ export default function Cadastro() {
     return (
         <View style={Estilos.container}>
             <StatusBar backgroundColor='#006EFF'/>
+            <BarraSuperior
+                conteudo='Calendário'
+                filtro={false}
+                voltar = {true}
+                onPress={() => Navigation.dispatch(DrawerActions.openDrawer())}
+                />
             <View style={Estilos.containerSecundario}>
                 <View style={Estilos.containerScrollView}>
                     <ScrollView contentContainerStyle={{minWidth: '100%', minHeight: '100%'}}>

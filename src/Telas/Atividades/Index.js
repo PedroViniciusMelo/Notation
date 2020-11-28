@@ -38,7 +38,8 @@ export default function home(props) {
             <BarraSuperior
                 conteudo='Atividades'
                 onPress={() => Navigation.dispatch(DrawerActions.openDrawer())}
-                valor={true} />
+                filtro={true}
+                voltar = {false} />
             <View style={Estilos.containerSecundario}>
                 <FlatList
                     style={Estilos.flatList}

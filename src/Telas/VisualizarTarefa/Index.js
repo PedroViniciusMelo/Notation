@@ -8,6 +8,8 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import Atividades from '../../Services/sqlite/Atividades';
 import * as Notifications from 'expo-notifications';
 
+import BarraSuperior from '../../Recursos/BarraSuperior/Index'
+
 
 
 export default function Index(props) {
@@ -133,7 +135,10 @@ export default function Index(props) {
 
     return (
         <View style={Estilos.container}>
-            <StatusBar backgroundColor='#006EFF'/>
+            <BarraSuperior
+                conteudo= 'Tarefa'
+                filtro= {false}
+                voltar= {true}/>
             <View style={Estilos.containerSecundario}>
                 <View style={Estilos.containerFatList}>
                     <ScrollView contentContainerStyle={{minHeight: '100%', minWidth: '100%'}}>

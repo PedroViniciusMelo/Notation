@@ -24,7 +24,8 @@ export default function HomeScreen() {
         <View style={Estilos.container}>
             <StatusBar backgroundColor='#006EFF'/>
             <BarraSuperior
-                valor={false}
+                filtro={false}
+                voltar={false}
                 onPress={() => Navigation.dispatch(DrawerActions.openDrawer())}
                 conteudo='Sobre o APP' />
             <View style={Estilos.containerSecundario}>

@@ -14,7 +14,7 @@ export default function historico(){
         <View style={Estilos.mainContainer}>
             <StatusBar backgroundColor='#006EFF'/>
             <BarraSuperior
-                valor={false}
+                filtro={false}
                 conteudo='Histórico'
                 onPress={() => Navigation.dispatch(DrawerActions.openDrawer())}/>
             <View style={Estilos.contianerFlatList}>
