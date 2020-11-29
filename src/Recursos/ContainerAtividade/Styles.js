@@ -44,5 +44,22 @@ export default StyleSheet.create({
         color: 'red',
         fontFamily: 'Poppins_400Regular',
         fontSize: normalizador.widthPercentageToDP('2.5%'),
+    },
+    classificacao: {
+        flexDirection: 'row', 
+        alignItems: 'center'
+    },
+    atrasado: {
+        flexDirection: 'row', 
+        justifyContent: "center", 
+        alignItems: 'center'
+    },
+    txtAtrasado: {
+        fontSize: normalizador.widthPercentageToDP('3%'), 
+        marginRight: 10, 
+        backgroundColor: 'red', 
+        color: 'white', 
+        padding: 3, 
+        borderRadius: 10
     }
 })

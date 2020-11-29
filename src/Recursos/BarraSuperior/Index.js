@@ -12,7 +12,6 @@ export default function BarraSuperior (props) {
 
     const navigation = useNavigation();
 
-
     function handleGoBack(){
         navigation.goBack()
     }
@@ -21,12 +20,13 @@ export default function BarraSuperior (props) {
         <View style={Estilos.container}>
             {props.voltar ?
                 (
-                    <BorderlessButton
-                        onPress = {handleGoBack}>
-                        
-                        <Icon name='arrow-left' color={'white'} size={35}/>
-
-                    </BorderlessButton>
+                <BorderlessButton
+                    onPress = {handleGoBack}>
+                    <Icon 
+                        name='arrow-left' 
+                        color={'white'} 
+                        size={35}/>
+                </BorderlessButton>
                 )
                 :
                 (
@@ -37,18 +37,17 @@ export default function BarraSuperior (props) {
                     <Barra/>
                 </TouchableOpacity>
                 )
-            
             }
+
             <Text style={Estilos.text}>{props.conteudo}</Text>
 
-
-            {/* Ternário para definir se será usado o ícone de filtros */}
             {props.filtro ? 
-                    (<TouchableOpacity onPress={props.onPress2}>
+                    (<TouchableOpacity>
                         <Categorias/>
                     </TouchableOpacity>) 
                 : 
-                    <View></View>}
+                    <View style={{width: '8%'}}></View>}
+                    
         </View>
     )
 }

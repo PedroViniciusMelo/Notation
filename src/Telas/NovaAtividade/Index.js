@@ -9,6 +9,7 @@ import { useNavigation } from '@react-navigation/native';
 import Constants from 'expo-constants';
 import * as Notifications from 'expo-notifications';
 import * as Permissions from 'expo-permissions';
+import formatTime from '../../Recursos/Formatador';
 
 import BarraSuperior from '../../Recursos/BarraSuperior/Index'
 
@@ -29,7 +30,7 @@ export default function Cadastro() {
 
     const Navigation = useNavigation();
     function NavigateToAtividades() {
-        Navigation.navigate('Atividades')
+        Navigation.goBack()
     }
 
 
@@ -51,33 +52,6 @@ export default function Cadastro() {
     const showTimepicker = () => {
         showMode('time');
     };
-    //Formata a data que vai ser mostrada no campo de seleção da data
-    const formatData = () => {
-        let dia = date.getDate();
-        let mes = date.getMonth();
-        let ano = date.getFullYear();
-
-        if (dia.toString().length === 1) {
-            dia = '0' + dia
-        }
-        if (mes.toString().length === 1) {
-            mes = '0' + (mes + 1)
-        }
-        return dia + '/' + mes + '/' + ano
-    }
-    //Formata as horas e minutos que vão ser mostrados no campo de seleção de tempo
-    const formatTime = () => {
-        let hora = date.getHours()
-        let minutos = date.getMinutes()
-
-        if (hora.toString().length === 1) {
-            hora = '0' + hora
-        }
-        if (minutos.toString().length === 1) {
-            minutos = '0' + minutos
-        }
-        return hora + ':' + minutos
-    }
     //Setter para os campos de texto e botões
     const reset = () => {
         setBtn(false);
@@ -88,20 +62,15 @@ export default function Cadastro() {
     }
     //Passa os dados para o Banco de dados
     function dados(IdFinal){
-
-        function createThen(){
-            alert('Adicionado com sucesso!')
-            reset()
-            NavigateToAtividades()
-        }
-
         Atividades.create({ titulo: titulo, categoria: categoria, descricao: descricao, data: date.toString(), notificar: IdFinal, atrasado: false, concluida: false, dataConcluida: '' })
-                .then(createThen())
+                .then(() => {
+                    alert('Adicionado com sucesso!')
+                    NavigateToAtividades()
+                })
                 .catch(err => console.log(err))
     }
-
+    //Função para salvar os dados no banco
     const save = () => {
-        //Verifica se nenhum dos campos obrigatórios estão vazios, se não, é passado os dados para o banco de dados e o usuário é retornardo para a tela de Atividades. Se algum campo estiver vazio, será retornado um Alert
         async function alertar(){
             await schedulePushNotification()
         }
@@ -139,12 +108,12 @@ export default function Cadastro() {
         responseListener.current = Notifications.addNotificationResponseReceivedListener();
 
         return () => {
-        Notifications.removeNotificationSubscription(notificationListener);
-        Notifications.removeNotificationSubscription(responseListener);
+            Notifications.removeNotificationSubscription(notificationListener);
+            Notifications.removeNotificationSubscription(responseListener);
         };
     }, []);
 
-
+    //Método customizável para a notificação
     async function schedulePushNotification() {
         const trigger = date
         trigger.setSeconds(0);
@@ -164,12 +133,12 @@ export default function Cadastro() {
         const { status: existingStatus } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
         let finalStatus = existingStatus;
         if (existingStatus !== 'granted') {
-        const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
-        finalStatus = status;
+            const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+            finalStatus = status;
         }
         if (finalStatus !== 'granted') {
-        alert('Failed to get push token for push notification!');
-        return;
+            alert('Failed to get push token for push notification!');
+            return;
         }
         token = (await Notifications.getExpoPushTokenAsync()).data;
         console.log(token);
@@ -194,7 +163,7 @@ export default function Cadastro() {
         <View style={Estilos.container}>
             <StatusBar backgroundColor='#006EFF'/>
             <BarraSuperior
-                conteudo='Calendário'
+                conteudo='Nova Tarefa'
                 filtro={false}
                 voltar = {true}
                 onPress={() => Navigation.dispatch(DrawerActions.openDrawer())}
@@ -236,7 +205,7 @@ export default function Cadastro() {
                                 size={normalizador.widthPercentageToDP('4%')}
                                 />
                             <TouchableOpacity onPress={showDatepicker}>
-                                <Text style={Estilos.textData}>{formatData()}</Text>
+                                <Text style={Estilos.textData}>{formatTime.formatDate(false, date)}</Text>
                             </TouchableOpacity>
                             <Feather
                                 name='clock'
@@ -244,7 +213,7 @@ export default function Cadastro() {
                                 size={normalizador.widthPercentageToDP('4%')}
                                 />
                             <TouchableOpacity onPress={showTimepicker}>
-                                <Text style={Estilos.textData}>{formatTime()}</Text>
+                                <Text style={Estilos.textData}>{formatTime.formatTime(false, date)}</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={Estilos.viewSwitch}>

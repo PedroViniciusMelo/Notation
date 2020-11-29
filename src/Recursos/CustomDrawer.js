@@ -1,5 +1,5 @@
 import React from 'react';
-import LogoSvg from './Logo/Index';
+import LogoSvg from '../../assets/Logo/Logo';
 import { StyleSheet, View } from "react-native";
 import DrawerSection from "react-native-paper/src/components/Drawer/DrawerSection";
 import {  DrawerItem } from "@react-navigation/drawer";
@@ -57,7 +57,7 @@ const Estilos = StyleSheet.create({
         alignSelf: 'center',
         marginTop:3,
         width: '60%',
-        height: '15%'
+        height: '13%'
     },
     divisoes : {
         backgroundColor: 'white',

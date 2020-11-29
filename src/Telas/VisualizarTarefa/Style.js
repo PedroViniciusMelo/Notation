@@ -18,6 +18,13 @@ export default StyleSheet.create({
         marginHorizontal: '3%',
         maxHeight: '66%'
     },
+    titulo: {
+        color: 'black', 
+        marginBottom: 20, 
+        maxWidth: '80%', 
+        fontSize: normalizador.widthPercentageToDP('6%'), 
+        fontFamily: 'Poppins_700Bold'
+    },
     contanierTituloAtividade: {
         flexDirection: 'row',
         justifyContent: 'space-between',

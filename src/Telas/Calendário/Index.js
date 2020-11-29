@@ -5,12 +5,13 @@ import BarraSuperior from '../../Recursos/BarraSuperior/Index';
 import Atividades from "../../Services/sqlite/Atividades";
 import ContainerAtividades from '../../Recursos/ContainerAtividade/Index';
 import { useNavigation, DrawerActions } from '@react-navigation/native';
+import formatTime from '../../Recursos/Formatador'
 
 export default function (){
     const [atividades, setAtividade] = useState(Atividades.all().then(a => update(a)))
 
     const Navigation = useNavigation()
-
+    //Método que verifica se a atividade está atrasada
     function update(atividade){
         let array = []
         atividade.forEach(element => {
@@ -23,28 +24,12 @@ export default function (){
         reformatAtividades(array)
     }
 
-    const formatData = (data) => {
-        let date = new Date(data)
-        let dia = date.getDate();
-        let mes = date.getMonth() + 1;
-        let ano = date.getFullYear();
-
-        if (dia.toString().length === 1){
-            dia = '0' + dia
-        }
-        if (mes.toString().length === 1){
-            mes = '0' + mes
-        }
-
-        return ano + '-'+ mes + '-' + dia
-    }
-
+    //Função para formatar o objeto de uma forma compreensivel para o componente de agenda
     function reformatAtividades (atividades2){
         let retorno = {}
-
         atividades2.forEach(element => {
             let hold = element.data
-            let data = formatData(hold)
+            let data = formatTime.formatDate(true, new Date(hold))
             if (data in retorno){
                 retorno[data].push(element)
             }else{

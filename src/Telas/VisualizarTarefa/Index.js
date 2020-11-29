@@ -7,6 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import Atividades from '../../Services/sqlite/Atividades';
 import * as Notifications from 'expo-notifications';
+import formatTime from '../../Recursos/Formatador'
 
 import BarraSuperior from '../../Recursos/BarraSuperior/Index'
 
@@ -25,6 +26,11 @@ export default function Index(props) {
     const [descricao, setDescricao] = useState(props.route.params.descricao)
     const [editavel, setEditavel] = useState(false)
 
+    //Método de navegação para tela inicial
+    const Navigation = useNavigation()
+    function goBackToMain() {
+        Navigation.goBack()
+    }
     //Métodos do DateTimePicker
     const [mode, setMode] = useState('date');
     const [show, setShow] = useState(false);
@@ -48,89 +54,46 @@ export default function Index(props) {
         showMode('time');
     };
 
-    //Métodos para formatação da data
-    //Formata a data que vai ser mostrada no campo de seleção da data
-    const formatData = () => {
-        let dia = data.getDate();
-        let mes = data.getMonth();
-        let ano = data.getFullYear();
-
-        if (dia.toString().length === 1) {
-            dia = '0' + dia
-        }
-        if (mes.toString().length === 1) {
-            mes = '0' + (mes + 1)
-        }
-        return dia + '/' + mes + '/' + ano
-    }
-    //Formata as horas e minutos que vão ser mostrados no campo de seleção de tempo
-    const formatTime = () => {
-        let hora = data.getHours()
-        let minutos = data.getMinutes()
-
-        if (hora.toString().length === 1) {
-            hora = '0' + hora
-        }
-        if (minutos.toString().length === 1) {
-            minutos = '0' + minutos
-        }
-        return hora + ':' + minutos
+    //Método para remoção da notificação
+    async function removeNotification(){
+        await Notifications.cancelScheduledNotificationAsync(idNotification)
     }
 
-    //Funções de atualização, remoção e conclusão das atividades
     //Atulizar dados da atividade
     const update = () => {
-        //Verifica se nenhum dos campos obrigatórios estão vazios, se não, é atualizado os dados no banco e o usuário é retornardo para a tela de Atividades. Se algum campo estiver vazio, será retornado um Alert
         if (titulo === '' || titulo === ' ') {
             return alert('Digite o Titulo')
         } else if (categoria === '' || categoria === ' ') {
             return alert('Digite a categoria')
         } else {
             Atividades.update(id, { ...props.route.params, titulo: titulo, categoria: categoria, descricao: descricao, data: data.toString() })
-                .then(() => alert('Atualizado com sucesso!'))
+                .then(() => {
+                    alert('Atualizado com sucesso!')
+                    goBackToMain()
+                })
                 .catch(err => console.log(err))
-            NavigateToAtividades()
+                
         }
     }
     //Deletar atividade
     const deletar = () =>{
-
-        function removeThen(){
-            async function removeNotification(){
-                await Notifications.cancelScheduledNotificationAsync(idNotification)
-            }
-            removeNotification()
-            alert('Removido com sucesso!')
-            NavigateToAtividades()
-        }
-
-
         Atividades.remove(id)
-            .then(removeThen())
+            .then(() => {
+                removeNotification()
+                alert('Removido com sucesso!')
+                goBackToMain()
+            })
             .catch(err => console.log(err))
     }
     //Colocar o campo concluida como True
     const setConcluida = () => {
-
-        function updateThen(){
-            async function removeNotification(){
-                await Notifications.cancelScheduledNotificationAsync(idNotification)
-            }
-            removeNotification()
-            alert('Adicionada como concluida!')
-            NavigateToAtividades()
-        }
-
         Atividades.update(id, { ...props.route.params, concluida: true, dataConcluida: new Date().toString(), atrasado: false})
-            .then(updateThen())
+            .then(() => {
+                removeNotification()
+                alert('Adicionada como concluida!')
+                goBackToMain()
+            })
             .catch(err => console.log(err))
-    }
-    //Método de navegação para tela inicial
-    const Navigation = useNavigation()
-
-    function NavigateToAtividades() {
-        //Navigation.navigate('Atividades')
-        Navigation.goBack()
     }
 
     return (
@@ -147,7 +110,7 @@ export default function Index(props) {
                                 value={titulo}
                                 onChangeText={text => setTitulo(text)}
                                 editable={editavel}
-                                style={{color: 'black', marginBottom: 20, maxWidth: '80%', fontSize: normalizador.widthPercentageToDP('6%'), fontFamily: 'Poppins_700Bold'}}
+                                style={Estilos.titulo}
                             />
 
                             <TouchableOpacity
@@ -180,7 +143,7 @@ export default function Index(props) {
                                 disabled={!editavel}
                                 hitSlop={{top: 20, left: 20, right: 20, bottom: 20}}
                                 >
-                                <Text style={Estilos.txtData}>{formatData()}</Text>
+                                <Text style={Estilos.txtData}>{formatTime.formatDate(false, data)}</Text>
                             </TouchableOpacity>
                             <Feather
                                 name='clock'
@@ -192,7 +155,7 @@ export default function Index(props) {
                                 disabled={!editavel}
                                 hitSlop={{top: 20, left: 20, right: 20, bottom: 20}}
                                 >
-                                <Text style={Estilos.txtData}>{formatTime()}</Text>
+                                <Text style={Estilos.txtData}>{formatTime.formatTime(false, data)}</Text>
                             </TouchableOpacity>
                         </View>
 
