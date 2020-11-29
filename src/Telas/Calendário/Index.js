@@ -5,24 +5,13 @@ import BarraSuperior from '../../Recursos/BarraSuperior/Index';
 import Atividades from "../../Services/sqlite/Atividades";
 import ContainerAtividades from '../../Recursos/ContainerAtividade/Index';
 import { useNavigation, DrawerActions } from '@react-navigation/native';
-import formatTime from '../../Recursos/Formatador'
+import formatTime from '../../Recursos/Formatador';
+import filtros from '../../Recursos/Filtros';
 
 export default function (){
-    const [atividades, setAtividade] = useState(Atividades.all().then(a => update(a)))
+    const [atividades, setAtividade] = useState(Atividades.all().then(a => reformatAtividades(filtros(a, false, false, false))))
 
     const Navigation = useNavigation()
-    //Método que verifica se a atividade está atrasada
-    function update(atividade){
-        let array = []
-        atividade.forEach(element => {
-            if(new Date(element.data) < new Date()){
-                array.push({...element, atrasado: true})
-            }else{
-                array.push({...element, atrasado: false})
-            }
-        })
-        reformatAtividades(array)
-    }
 
     //Função para formatar o objeto de uma forma compreensivel para o componente de agenda
     function reformatAtividades (atividades2){

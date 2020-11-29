@@ -6,23 +6,12 @@ import ContainerAtividade from '../../Recursos/ContainerAtividade/Index';
 import Estilos from './Style';
 import Atividades from '../../Services/sqlite/Atividades';
 import { useNavigation, DrawerActions } from '@react-navigation/native';
+import filtros from '../../Recursos/Filtros'
 
 
 export default function home(props) {
-    const [atividades, setAtividades] = useState(Atividades.findByConcluded('0').then(a => update(a)))
-  
-
-    function update(atividade){
-        let array = []
-        atividade.forEach(element => {
-            if(new Date(element.data) < new Date()){
-                array.push({...element, atrasado: true})
-            }else{
-                array.push({...element, atrasado: false})
-            }
-        })
-        setAtividades(array)
-    }
+    const [atividades, setAtividades] = useState(Atividades.findByConcluded('0').then(a => {setAtividades(filtros(a, false, false, false))}))
+    //O primiero parametro são as atividades, o segundo é o filtro por data, terceiro filtro por atrasada, quarto filtro por categoria
 
 
 
