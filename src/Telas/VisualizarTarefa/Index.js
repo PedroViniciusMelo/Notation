@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, Text, TextInput, ScrollView, StatusBar } from 'react-native';
+import { View, TouchableOpacity, Text, TextInput, ScrollView } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import Estilos from './Style';
 import normalizador from "../../Recursos/normalizador";
