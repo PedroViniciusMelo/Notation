@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState} from 'react';
 import { View, Text, TextInput, TouchableOpacity, Switch, ScrollView, StatusBar, Platform } from "react-native";
 import Estilos from './Styles';
 import Atividades from '../../Services/sqlite/Atividades';
@@ -6,9 +6,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { Feather } from '@expo/vector-icons';
 import normalizador from '../../Recursos/normalizador';
 import { useNavigation } from '@react-navigation/native';
-import Constants from 'expo-constants';
-import * as Notifications from 'expo-notifications';
-import * as Permissions from 'expo-permissions';
+import schedulePushNotification from '../../Services/Notifications'
 import formatTime from '../../Recursos/Formatador';
 
 import BarraSuperior from '../../Recursos/BarraSuperior/Index'
@@ -72,7 +70,9 @@ export default function Cadastro() {
     //Função para salvar os dados no banco
     const save = () => {
         async function alertar(){
-            await schedulePushNotification()
+            await schedulePushNotification(titulo, date).then(
+                id => dados(id)
+            )
         }
 
         if (titulo === '' || titulo === ' ') {
@@ -87,75 +87,7 @@ export default function Cadastro() {
             }
         }
     }
-    //-=-=-==-=-=-=-=-=-=-=-=-=-=-=--= Métodos para a implemetação das notificações =-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
-    const notificationListener = useRef();
-    const responseListener = useRef();
-
-    Notifications.setNotificationHandler({
-        handleNotification: async () => ({
-            shouldShowAlert: true,
-            shouldPlaySound: false,
-            shouldSetBadge: false,
-        }),
-        });
-
-    useEffect(() => {
-        registerForPushNotificationsAsync();
-
-        notificationListener.current = Notifications.addNotificationReceivedListener();
-
-        responseListener.current = Notifications.addNotificationResponseReceivedListener();
-
-        return () => {
-            Notifications.removeNotificationSubscription(notificationListener);
-            Notifications.removeNotificationSubscription(responseListener);
-        };
-    }, []);
-
-    //Método customizável para a notificação
-    async function schedulePushNotification() {
-        const trigger = date
-        trigger.setSeconds(0);
-        await Notifications.scheduleNotificationAsync({
-            content: {
-            title: "Olá, você tem uma nova atividade! ⌛",
-            body: `Não esqueça, ${titulo}`,
-            data: { data: 'goes here' },
-            },
-            trigger
-        }).then(idNote => dados(idNote))
-    }
-
-    async function registerForPushNotificationsAsync() {
-    let token;
-    if (Constants.isDevice) {
-        const { status: existingStatus } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
-        let finalStatus = existingStatus;
-        if (existingStatus !== 'granted') {
-            const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
-            finalStatus = status;
-        }
-        if (finalStatus !== 'granted') {
-            alert('Failed to get push token for push notification!');
-            return;
-        }
-        token = (await Notifications.getExpoPushTokenAsync()).data;
-        console.log(token);
-    } else {
-        alert('Must use physical device for Push Notifications');
-    }
-
-    if (Platform.OS === 'android') {
-        Notifications.setNotificationChannelAsync('default', {
-        name: 'default',
-        importance: Notifications.AndroidImportance.MAX,
-        vibrationPattern: [0, 250, 250, 250],
-        lightColor: '#FF231F7C',
-        });
-    }
-    return token;
-    }
+    
 
 
 
