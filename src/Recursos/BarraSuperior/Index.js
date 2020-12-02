@@ -44,7 +44,7 @@ export default function BarraSuperior (props) {
         return(
             <TouchableOpacity 
                 onPress={openMenu}
-                hitSlop={{top: 20, left: 20, right: 20, bottom: 20}}>
+                hitSlop={{top: 30, left: 30, right: 30, bottom: 30}}>
                 <Icon 
                     name={open ? 'filter' : 'filter-outline'} 
                     size={normalizador.widthPercentageToDP('6%')} 
@@ -70,7 +70,7 @@ export default function BarraSuperior (props) {
                 (
                 <TouchableOpacity 
                     onPress={props.onPress}
-                    hitSlop={{top: 20, left: 20, right: 20, bottom: 20}}
+                    hitSlop={{top: 30, left: 30, right: 30, bottom: 30}}
                     >
                     <Barra/>
                 </TouchableOpacity>

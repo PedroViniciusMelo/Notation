@@ -10,6 +10,7 @@ Notifications.setNotificationHandler({
 
 //Método customizável para a notificação
 export default async function schedulePushNotification(titulo, date) {
+    let idMsg 
     const trigger = date
     trigger.setSeconds(0);
     await Notifications.scheduleNotificationAsync({
@@ -19,5 +20,6 @@ export default async function schedulePushNotification(titulo, date) {
         data: { data: 'goes here' },
         },
         trigger
-    }).then(idNote => {return idNote })
+    }).then(idNote => idMsg = idNote )
+    return idMsg
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, Text, TextInput, ScrollView } from 'react-native';
+import { View, TouchableOpacity, Text, TextInput, ScrollView, ToastAndroid } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import Estilos from './Style';
 import normalizador from "../../Recursos/normalizador";
@@ -7,11 +7,18 @@ import { useNavigation } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import Atividades from '../../Services/sqlite/Atividades';
 import * as Notifications from 'expo-notifications';
-import formatTime from '../../Recursos/Formatador'
+import formatTime from '../../Recursos/Formatador';
+import schedulePushNotification from '../../Services/Notifications'
 
 import BarraSuperior from '../../Recursos/BarraSuperior/Index'
 
-
+function exibirToast(props) {
+    ToastAndroid.showWithGravity(
+        `${props}`,
+        ToastAndroid.SHORT,
+        ToastAndroid.CENTER
+    );
+}
 
 export default function Index(props) {
     //ID da atividade
@@ -61,18 +68,34 @@ export default function Index(props) {
 
     //Atulizar dados da atividade
     const update = () => {
+        async function alertar(){
+            await schedulePushNotification(titulo, data).then(
+                id => updateAtividade(id)
+            )
+        }
+
+        function updateAtividade(IdNote){
+            Atividades.update(id, { ...props.route.params, titulo: titulo, categoria: categoria, descricao: descricao, data: data.toString() , notificar: IdNote})
+            .then(() => {
+                exibirToast('Atualizado com sucesso!')
+                goBackToMain()
+            })
+            .catch(err => console.log(err))
+        }
+
         if (titulo === '' || titulo === ' ') {
-            return alert('Digite o Titulo')
+            exibirToast('Digite o Titulo')
+            return
         } else if (categoria === '' || categoria === ' ') {
-            return alert('Digite a categoria')
+            exibirToast('Digite a categoria')
+            return
         } else {
-            Atividades.update(id, { ...props.route.params, titulo: titulo, categoria: categoria, descricao: descricao, data: data.toString() })
-                .then(() => {
-                    alert('Atualizado com sucesso!')
-                    goBackToMain()
-                })
-                .catch(err => console.log(err))
-                
+            if(idNotification != ''){
+                removeNotification()
+                    .then(alertar())
+            }else{
+                updateAtividade('')
+            }  
         }
     }
     //Deletar atividade
@@ -80,7 +103,7 @@ export default function Index(props) {
         Atividades.remove(id)
             .then(() => {
                 removeNotification()
-                alert('Removido com sucesso!')
+                exibirToast('Removido com sucesso!')
                 goBackToMain()
             })
             .catch(err => console.log(err))
@@ -90,7 +113,7 @@ export default function Index(props) {
         Atividades.update(id, { ...props.route.params, concluida: true, dataConcluida: new Date().toString(), atrasado: false})
             .then(() => {
                 removeNotification()
-                alert('Adicionada como concluida!')
+                exibirToast('Adicionada como concluida!')
                 goBackToMain()
             })
             .catch(err => console.log(err))
@@ -115,7 +138,7 @@ export default function Index(props) {
 
                             <TouchableOpacity
                                 onPress={() => setEditavel(!editavel)}
-                                hitSlop={{top: 20, left: 20, right: 20, bottom: 20}}
+                                hitSlop={{top: 30, left: 30, right: 30, bottom: 30}}
                                 >
                                 <Feather
                                     name='edit'
@@ -141,7 +164,7 @@ export default function Index(props) {
                             <TouchableOpacity
                                 onPress={showDatepicker}
                                 disabled={!editavel}
-                                hitSlop={{top: 20, left: 20, right: 20, bottom: 20}}
+                                hitSlop={{top: 30, left: 30, right: 30, bottom: 30}}
                                 >
                                 <Text style={Estilos.txtData}>{formatTime.formatDate(false, data)}</Text>
                             </TouchableOpacity>
@@ -153,7 +176,7 @@ export default function Index(props) {
                             <TouchableOpacity
                                 onPress={showTimepicker}
                                 disabled={!editavel}
-                                hitSlop={{top: 20, left: 20, right: 20, bottom: 20}}
+                                hitSlop={{top: 30, left: 30, right: 30, bottom: 30}}
                                 >
                                 <Text style={Estilos.txtData}>{formatTime.formatTime(false, data)}</Text>
                             </TouchableOpacity>

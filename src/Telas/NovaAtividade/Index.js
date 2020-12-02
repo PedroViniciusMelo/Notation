@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import { View, Text, TextInput, TouchableOpacity, Switch, ScrollView, StatusBar, Platform } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Switch, ScrollView, StatusBar, Platform, ToastAndroid } from "react-native";
 import Estilos from './Styles';
 import Atividades from '../../Services/sqlite/Atividades';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -11,6 +11,13 @@ import formatTime from '../../Recursos/Formatador';
 
 import BarraSuperior from '../../Recursos/BarraSuperior/Index'
 
+function exibirToast(props) {
+    ToastAndroid.showWithGravity(
+        `${props}`,
+        ToastAndroid.SHORT,
+        ToastAndroid.CENTER
+    );
+}
 
 
 export default function Cadastro() {
@@ -50,19 +57,11 @@ export default function Cadastro() {
     const showTimepicker = () => {
         showMode('time');
     };
-    //Setter para os campos de texto e botões
-    const reset = () => {
-        setBtn(false);
-        setCategoria(' ');
-        setTitulo(' ');
-        setDescricao(' ');
-        setDate(new Date());
-    }
     //Passa os dados para o Banco de dados
     function dados(IdFinal){
         Atividades.create({ titulo: titulo, categoria: categoria, descricao: descricao, data: date.toString(), notificar: IdFinal, atrasado: false, concluida: false, dataConcluida: '' })
                 .then(() => {
-                    alert('Adicionado com sucesso!')
+                    exibirToast('Adicionado com sucesso!')
                     NavigateToAtividades()
                 })
                 .catch(err => console.log(err))
@@ -76,9 +75,11 @@ export default function Cadastro() {
         }
 
         if (titulo === '' || titulo === ' ') {
-            return alert('Digite o Titulo')
+            exibirToast('Digite o Titulo')
+            return
         } else if (categoria === '' || categoria === ' ') {
-            return alert('Digite a categoria')
+            exibirToast('Digite a categoria')
+            return
         } else {
             if(btn){
                 alertar()
@@ -87,8 +88,6 @@ export default function Cadastro() {
             }
         }
     }
-    
-
 
 
     return (
