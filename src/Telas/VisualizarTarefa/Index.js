@@ -24,7 +24,7 @@ export default function Index(props) {
     //ID da atividade
     let id = props.route.params.id
     let idNotification = props.route.params.notificar
-
+    const [atvConcluida, setAtvConcluida] = useState(props.route.params.concluida)
 
     //Dados da atividade
     const [data, setData] = useState(new Date(props.route.params.data))
@@ -75,10 +75,15 @@ export default function Index(props) {
         }
 
         function updateAtividade(IdNote){
-            Atividades.update(id, { ...props.route.params, titulo: titulo, categoria: categoria, descricao: descricao, data: data.toString() , notificar: IdNote})
+            Atividades.update(id, { ...props.route.params, titulo: titulo, categoria: categoria, descricao: descricao, data: data.toString() , notificar: IdNote, concluida: false})
             .then(() => {
-                exibirToast('Atualizado com sucesso!')
-                goBackToMain()
+                if(atvConcluida){
+                    exibirToast('Desmarcada como concluida!')
+                }else{
+                    exibirToast('Atualizado com sucesso!')
+                    goBackToMain()
+                }
+                
             })
             .catch(err => console.log(err))
         }
@@ -118,6 +123,20 @@ export default function Index(props) {
             })
             .catch(err => console.log(err))
     }
+    function BtnFunction({...propsContente}){
+        return(
+            <TouchableOpacity
+                style={propsContente.props.estilo}
+                onPress={propsContente.props.onPress}>
+                <Feather
+                    name={propsContente.props.name}
+                    size={normalizador.widthPercentageToDP('5%')}
+                    color='white'
+                    />
+                <Text style={Estilos.txtBtn1}>{propsContente.props.textoBtn}</Text>
+            </TouchableOpacity>
+        )
+    }
 
     return (
         <View style={Estilos.container}>
@@ -137,6 +156,7 @@ export default function Index(props) {
                             />
 
                             <TouchableOpacity
+                                disabled={atvConcluida}
                                 onPress={() => setEditavel(!editavel)}
                                 hitSlop={{top: 30, left: 30, right: 30, bottom: 30}}
                                 >
@@ -194,41 +214,47 @@ export default function Index(props) {
                     </ScrollView>
                 </View>
                 <View>
-                    {editavel ?
-                        <TouchableOpacity
-                            style={Estilos.Btn1}
-                            onPress={update}>
-                            <Feather
-                                name='edit'
-                                size={normalizador.widthPercentageToDP('5%')}
-                                color='white'
-                                />
-                            <Text style={Estilos.txtBtn1}>Salvar alterações</Text>
-                        </TouchableOpacity>
-                        :
-                        <TouchableOpacity
-                            style={Estilos.Btn1}
-                            onPress={setConcluida}>
-                            <Feather
-                                name='check'
-                                size={normalizador.widthPercentageToDP('5%')}
-                                color='white'
-                                />
-                            <Text style={Estilos.txtBtn1}>Marcar como concluida</Text>
-                        <View/>
-                        </TouchableOpacity>
-                    }
-                    <TouchableOpacity
-                        style={Estilos.Btn2}
-                        onPress={deletar}>
-                        <Feather
-                            name='trash-2'
-                            size={normalizador.widthPercentageToDP('5%')}
-                            color='white'
+                    {!atvConcluida ?
+                        editavel ?
+                            <BtnFunction
+                                props={{
+                                    estilo: Estilos.Btn1,
+                                    onPress: update,
+                                    name: 'edit',
+                                    textoBtn: 'Salvar alterações'
+                                }}
                             />
-                        <Text style={Estilos.txtBtn1}>Deletar tarefa</Text>
-                        <View/>
-                    </TouchableOpacity>
+                        :
+                            <BtnFunction
+                                props={{
+                                    estilo: Estilos.Btn1,
+                                    onPress: setConcluida,
+                                    name: 'check',
+                                    textoBtn: 'Marcar como concluida'
+                                }}
+                            />
+                    :
+                        <BtnFunction
+                            props={{
+                                estilo: Estilos.btn3,
+                                onPress: (() => {
+                                    setAtvConcluida(false)
+                                    update()
+                                }),
+                                name: 'check',
+                                textoBtn: 'Desmarcar como concluida'
+                            }}
+                        />
+                    }
+                    <BtnFunction
+                        props={{
+                            estilo: Estilos.Btn2,
+                            onPress: deletar,
+                            name: 'trash-2',
+                            textoBtn: 'Deletar tarefa'
+                        }}
+                    />
+                    
                 </View>
                 {show && (
                     <DateTimePicker

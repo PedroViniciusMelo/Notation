@@ -27,8 +27,6 @@ export default function Rotas(){
 }
 
 
-
-
 function Drawer(){
     const SideBar = createDrawerNavigator();
 
@@ -55,7 +53,9 @@ function Drawer(){
             <SideBar.Screen name={'Calendário'} component={CalendarNavigator} options={({route}) => ({
                 gestureEnabled: getHeaderTitle(route)
             })}/>
-            <SideBar.Screen name={'Histórico'} component={Historico} />
+            <SideBar.Screen name={'Histórico'} component={HistoryNavigator} options={({route}) => ({
+                gestureEnabled: getHeaderTitle(route)
+            })}/>
             <SideBar.Screen name={'Sobre o App'} component={SobreApp} />
         </SideBar.Navigator>
     )
@@ -79,6 +79,16 @@ function CalendarNavigator(){
     return(
         <Navigator screenOptions={{headerShown: false}}>
             <Screen name='Calendário' component={Calendario} options={{headerShown: false}}/>
+            <Screen name='VisualizarAtividade' component={VisualizarAtividade}/>
+        </Navigator>
+    )
+}
+
+function HistoryNavigator(){
+    const { Navigator, Screen } = createStackNavigator();
+    return(
+        <Navigator screenOptions={{headerShown: false}}>
+            <Screen name='Histórico' component={Historico}/>
             <Screen name='VisualizarAtividade' component={VisualizarAtividade}/>
         </Navigator>
     )

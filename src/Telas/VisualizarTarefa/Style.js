@@ -79,7 +79,7 @@ export default StyleSheet.create({
         padding: 10
     },
     Btn1:{
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
         padding: '4%',
         margin: '2%',
         backgroundColor: 'blue',
@@ -89,7 +89,7 @@ export default StyleSheet.create({
         elevation: 5
     },
     Btn2:{
-        justifyContent: 'space-between',
+        justifyContent: 'space-evenly',
         padding: '4%',
         margin: '2%',
         backgroundColor: 'red',
@@ -103,5 +103,15 @@ export default StyleSheet.create({
         fontFamily: 'Poppins_700Bold',
         color: 'white',
         fontSize: normalizador.widthPercentageToDP('3%')
+    },
+    btn3: {
+        justifyContent: 'space-around',
+        padding: '4%',
+        margin: '2%',
+        backgroundColor: 'green',
+        borderRadius: 40,
+        alignItems: 'center',
+        flexDirection: 'row',
+        elevation: 5
     }
 })

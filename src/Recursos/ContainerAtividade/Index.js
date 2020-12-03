@@ -18,7 +18,6 @@ export default function Container(props){
 
     return(
         <TouchableOpacity
-            disabled={props.obj.concluida}
             style={Estilos.container}
             onPress={NavigateToVisualizarAtividade}>
             <View style={{maxWidth: '75%'}}>
