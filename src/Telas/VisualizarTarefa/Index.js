@@ -241,7 +241,7 @@ export default function Index(props) {
                                     setAtvConcluida(false)
                                     update()
                                 }),
-                                name: 'check',
+                                name: 'x',
                                 textoBtn: 'Desmarcar como concluida'
                             }}
                         />
