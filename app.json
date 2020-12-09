@@ -16,6 +16,13 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "android":{
+      "icon": "./assets/icon-fg.png",
+      "adaptiveIcon": { 
+        "foregroundImage": "./assets/icon-fg.png",
+        "backgroundImage": "./assets/icon-bg.png" 
+      }
+    },
     "ios": {
       "supportsTablet": true
     },
