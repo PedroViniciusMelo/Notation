@@ -14,7 +14,7 @@ export default StyleSheet.create({
     },
     containerFl: {
         alignItems: 'center',
-        maxHeight: '30%'
+        maxHeight: '20%'
     },
     text: {
         fontFamily: 'Poppins_700Bold',
@@ -22,14 +22,15 @@ export default StyleSheet.create({
         fontSize: normalizador.widthPercentageToDP('6%')
     },
     nomes: {
+        textAlign: 'center',
         color: 'black',
         fontSize: normalizador.widthPercentageToDP('4%'),
     },
     quadrado : {
         justifyContent: 'center',
         alignItems: 'center',
-        height : normalizador.widthPercentageToDP('20%'),
-        width : normalizador.widthPercentageToDP('20%'),
+        padding: "3%",
+        borderRadius: 20,
         backgroundColor : 'black',
     },
     textoQuadrado : {

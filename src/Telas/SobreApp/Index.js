@@ -4,6 +4,8 @@ import Estilos from './Styles';
 import BarraSuperior from '../../Recursos/BarraSuperior/Index';
 import Logo from "../../Recursos/Logo/Index";
 import { useNavigation, DrawerActions } from '@react-navigation/native';
+import Logo2 from "../../../assets/Logo1"
+import normalizador from '../../Recursos/normalizador';
 
 //Variável contendo a lista de desenvolvedores
 const pessoas = [
@@ -43,7 +45,10 @@ export default function HomeScreen() {
                     <Text style={Estilos.nomes}>email@mail.com</Text>
                 </View>
                 <View style={Estilos.quadrado}>
-                    <Text style={Estilos.textoQuadrado}>BRASÃO CASO NECESSÁRIO</Text>
+                  <Logo2
+                    width={normalizador.widthPercentageToDP("45%")}
+                    height={normalizador.heightPercentageToDP("10%")}
+                  />
                 </View>
                 <View>
                     <Text style={Estilos.direitos}>2020 direitos reservados</Text>
