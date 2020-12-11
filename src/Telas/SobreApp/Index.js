@@ -12,10 +12,7 @@ const pessoas = [
     { id: '01', desc: 'Pedro Silva' },
     { id: '02', desc: 'José Pereira' },
     { id: '03', desc: 'Cleyton Alves' },
-    { id: '04', desc: 'Cleyton Alves' },
-    { id: '05', desc: 'Cleyton Alves' },
-    { id: '06', desc: 'Pedro Silva' },
-    { id: '07', desc: 'Pedro Silva' },
+   
 ]
 
 export default function HomeScreen() {
