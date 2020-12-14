@@ -75,10 +75,10 @@ export default function Cadastro() {
         }
 
         if (titulo === '' || titulo === ' ') {
-            exibirToast('Digite o Titulo')
+            exibirToast('Digite o título!')
             return
         } else if (categoria === '' || categoria === ' ') {
-            exibirToast('Digite a categoria')
+            exibirToast('Digite a categoria!')
             return
         } else {
             if(btn){
@@ -120,6 +120,7 @@ export default function Cadastro() {
                         <Text style={Estilos.titulos}>Descrição<Text style={Estilos.descricao}> (Opcional)</Text></Text>
                         <View style={Estilos.mulTxtInput}>
                             <TextInput
+                                style={{fontSize: normalizador.widthPercentageToDP('3.5%'),}}
                                 value={descricao}
                                 placeholder='Descrição'
                                 multiline
@@ -148,7 +149,7 @@ export default function Cadastro() {
                             </TouchableOpacity>
                         </View>
                         <View style={Estilos.viewSwitch}>
-                            <Text style={Estilos.notificar}>Noticar</Text>
+                            <Text style={Estilos.notificar}>Notificar</Text>
                                 <Switch
                                     trackColor={{ false: '#dedede', true: '#3e7fff' }}
                                     thumbColor={btn ? '#7eaaff' : '#dedede'}

@@ -14,7 +14,7 @@ export default StyleSheet.create({
     },
     containerFl: {
         alignItems: 'center',
-        maxHeight: '20%'
+        maxHeight: '25.5%'
     },
     text: {
         fontFamily: 'Poppins_700Bold',

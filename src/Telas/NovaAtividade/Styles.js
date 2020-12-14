@@ -30,6 +30,7 @@ export default StyleSheet.create({
         fontSize : normalizador.widthPercentageToDP('2%')
     },
     textInput: {
+        fontSize: normalizador.widthPercentageToDP('3.5%'),
         padding: '2%',
         borderWidth: 1,
         borderColor: '#d9d9d9',

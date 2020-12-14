@@ -78,7 +78,7 @@ export default function Index(props) {
             Atividades.update(id, { ...props.route.params, titulo: titulo, categoria: categoria, descricao: descricao, data: data.toString() , notificar: IdNote, concluida: false})
             .then(() => {
                 if(atvConcluida){
-                    exibirToast('Desmarcada como concluida!')
+                    exibirToast('Desmarcada como concluída!')
                 }else{
                     exibirToast('Atualizado com sucesso!')
                     goBackToMain()
@@ -89,10 +89,10 @@ export default function Index(props) {
         }
 
         if (titulo === '' || titulo === ' ') {
-            exibirToast('Digite o Titulo')
+            exibirToast('Digite o título!')
             return
         } else if (categoria === '' || categoria === ' ') {
-            exibirToast('Digite a categoria')
+            exibirToast('Digite a categoria!')
             return
         } else {
             if(idNotification != ''){
@@ -118,7 +118,7 @@ export default function Index(props) {
         Atividades.update(id, { ...props.route.params, concluida: true, dataConcluida: new Date().toString(), atrasado: false})
             .then(() => {
                 removeNotification()
-                exibirToast('Adicionada como concluida!')
+                exibirToast('Adicionada como concluída!')
                 goBackToMain()
             })
             .catch(err => console.log(err))
@@ -206,6 +206,7 @@ export default function Index(props) {
                         <View   style={Estilos.txtDescricao}>
                             <TextInput
                                 multiline
+                                style={{fontSize: normalizador.widthPercentageToDP('3.5%')}}
                                 value={descricao}
                                 editable={editavel}
                                 onChangeText={text => setDescricao(text)}
@@ -230,7 +231,7 @@ export default function Index(props) {
                                     estilo: Estilos.Btn1,
                                     onPress: setConcluida,
                                     name: 'check',
-                                    textoBtn: 'Marcar como concluida'
+                                    textoBtn: 'Marcar como concluída'
                                 }}
                             />
                     :
@@ -242,7 +243,7 @@ export default function Index(props) {
                                     update()
                                 }),
                                 name: 'x',
-                                textoBtn: 'Desmarcar como concluida'
+                                textoBtn: 'Desmarcar como concluída'
                             }}
                         />
                     }
