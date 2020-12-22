@@ -7,7 +7,8 @@ import { useNavigation } from '@react-navigation/native';
 import formatTime from '../Formatador';
 
 export default function Container(props){
-    props.obj.concluida = props.obj.concluida === '1';
+
+    //let concluida = props.obj.concluida === '1';
 
     //StackNavigator, usado no container para que quando ele seja clicado seja aberto o componente de visualizarTarefa
     const Navigation = useNavigation()
@@ -15,6 +16,32 @@ export default function Container(props){
         Navigation.navigate('VisualizarAtividade', props.obj)
     }
 
+    const textoConcluida = <Text style={Estilos.textoData2}>Atividade concluida em </Text>;
+
+    const iconeCalendario = (<Feather
+                            name='calendar'
+                            color='black'
+                            size={normalizador.widthPercentageToDP('5%')}
+                            />)
+
+    const atrasada = (<View style={Estilos.atrasado}>
+                            <Text style={Estilos.txtAtrasado}>Atrasada</Text>
+                            <Feather 
+                                name='alert-triangle' 
+                                size={normalizador.widthPercentageToDP('5%')} 
+                                color='red'
+                                />
+                        </View> )
+
+    const statusDaTarefa = () =>{
+        if(props.obj.concluida == 1){
+            return textoConcluida;
+        }else if(props.obj.atrasada){
+            return atrasada;
+        }else{
+            return iconeCalendario;
+        }
+    }
 
     return(
         <TouchableOpacity
@@ -29,25 +56,8 @@ export default function Container(props){
                 </View>
                 <View style={Estilos.data}>
                     <View style={Estilos.classificacao}>
-                        {props.obj.concluida ?
-                            <Text style={Estilos.textoData2}>Atividade concluida em </Text>
-                            :
-                            props.obj.atrasado ? 
-                            <View style={Estilos.atrasado}>
-                                <Text style={Estilos.txtAtrasado}>Atrasada</Text>
-                                <Feather 
-                                    name='alert-triangle' 
-                                    size={normalizador.widthPercentageToDP('5%')} 
-                                    color='red'
-                                    />
-                            </View> 
-                            :
-                            <Feather
-                                name='calendar'
-                                color='black'
-                                size={normalizador.widthPercentageToDP('5%')}
-                                />}
-                        <Text style={Estilos.textoData}>{formatTime.formatDate(false, new Date(props.obj.concluida ? props.obj.dataConcluida : props.obj.data))}</Text>
+                    {statusDaTarefa()}    
+                    <Text style={Estilos.textoData}>{formatTime.formatDate(false, new Date(props.obj.concluida ==1 ? props.obj.dataConcluida : props.obj.data))}</Text>
                     </View>
                 </View>
             </View>
