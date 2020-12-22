@@ -24,21 +24,23 @@ export default function Container(props){
                             size={normalizador.widthPercentageToDP('5%')}
                             />)
 
-    const atrasada = (<View style={Estilos.atrasado}>
+    const atrasada = <View style={Estilos.atrasado}>
                             <Text style={Estilos.txtAtrasado}>Atrasada</Text>
                             <Feather 
                                 name='alert-triangle' 
                                 size={normalizador.widthPercentageToDP('5%')} 
                                 color='red'
                                 />
-                        </View> )
+                        </View> 
 
     const statusDaTarefa = () =>{
-        if(props.obj.concluida == 1){
-            return textoConcluida;
-        }else if(props.obj.atrasada){
+        
+        
+        if(props.obj.atrasado && !props.obj.concluida){
             return atrasada;
-        }else{
+        } else if(props.obj.concluida){
+            return textoConcluida;
+        } else{
             return iconeCalendario;
         }
     }
@@ -57,7 +59,7 @@ export default function Container(props){
                 <View style={Estilos.data}>
                     <View style={Estilos.classificacao}>
                     {statusDaTarefa()}    
-                    <Text style={Estilos.textoData}>{formatTime.formatDate(false, new Date(props.obj.concluida ==1 ? props.obj.dataConcluida : props.obj.data))}</Text>
+                    <Text style={Estilos.textoData}>{formatTime.formatDate(false, new Date(props.obj.concluida ? props.obj.dataConcluida : props.obj.data))}</Text>
                     </View>
                 </View>
             </View>

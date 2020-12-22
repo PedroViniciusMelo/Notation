@@ -2,9 +2,9 @@ export default function update(atividade, filtroData, filtroAtrasada, filtroCate
     let array = []
     atividade.forEach(element => {
         if(new Date(element.data) < new Date()){
-            array.push({...element, atrasado: true})
+            array.push({...element, atrasado: true, concluida: element.concluida == 1 ? true : false})
         }else{
-            array.push({...element, atrasado: false})
+            array.push({...element, atrasado: false, concluida: element.concluida == 1 ? true : false})
         }
     })
     if (filtroData){
