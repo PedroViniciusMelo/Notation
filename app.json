@@ -17,8 +17,9 @@
       "**/*"
     ],
     "android":{
-      "package": "com.ufape.notation",
-      "versionCode": 1,
+      "package": "com.uname.notation",
+      "versionCode": 2,
+      "permissions": [],
       "icon": "./assets/icon.png",
       "adaptiveIcon": { 
         "foregroundImage": "./assets/icon-fg.png",

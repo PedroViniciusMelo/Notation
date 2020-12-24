@@ -8,10 +8,9 @@ import normalizador from '../../Recursos/normalizador';
 
 //Variável contendo a lista de desenvolvedores
 const pessoas = [
-    { id: '01', desc: 'Orientador: Pessoa 1' },
-    { id: '02', desc: 'Desenvolvedor: Pessoa 2' },
-    { id: '03', desc: 'Desenvolvedor: Pessoa 3' },
-    { id: '04', desc: 'Desenvolvedor: Pessoa 4' },
+    { id: '01', desc: 'Orientador: Jean Teixeira' },
+    { id: '02', desc: 'Desenvolvedor: Pedro Vinicius' },
+    { id: '03', desc: 'Desenvolvedor: Victor Andrade' },
 ]
 
 export default function HomeScreen() {
@@ -43,7 +42,7 @@ export default function HomeScreen() {
                 <View style={Estilos.quadrado}>
                     <Image 
                         style={{
-                            width: normalizador.widthPercentageToDP("35%"),		
+                            width: normalizador.widthPercentageToDP("45%"),		
                             height: normalizador.heightPercentageToDP("20%"),}}
                         source ={require("../../../assets/apoio.png")} />
                 </View>
