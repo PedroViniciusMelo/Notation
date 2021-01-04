@@ -144,13 +144,18 @@ export default function Index(props) {
                 conteudo= 'Tarefa'
                 filtro= {false}
                 voltar= {true}/>
+                
             <View style={Estilos.containerSecundario}>
                 <View style={Estilos.containerFatList}>
-                    <ScrollView contentContainerStyle={{minHeight: '100%', minWidth: '100%'}}>
+                    <ScrollView 
+                        showsVerticalScrollIndicator ={false}
+                        contentContainerStyle={{minHeight: '100%', minWidth: '100%'}}>
+                            
                         <View style={Estilos.contanierTituloAtividade}>
                             <TextInput
                                 value={titulo}
                                 onChangeText={text => setTitulo(text)}
+                                multiline
                                 editable={editavel}
                                 style={Estilos.titulo}
                             />
@@ -162,7 +167,7 @@ export default function Index(props) {
                                 >
                                 <Feather
                                     name='edit'
-                                    size={normalizador.widthPercentageToDP('6%')}/>
+                                    size={normalizador.widthPercentageToDP('7%')}/>
                             </TouchableOpacity>
                         </View>
 
@@ -207,6 +212,7 @@ export default function Index(props) {
                             <TextInput
                                 multiline
                                 style={{fontSize: normalizador.widthPercentageToDP('3.5%')}}
+                                placeholder="Sem Descrição"
                                 value={descricao}
                                 editable={editavel}
                                 onChangeText={text => setDescricao(text)}

@@ -11,7 +11,8 @@ export default StyleSheet.create({
         justifyContent: 'space-evenly'
     },
     containerFatList:{
-        padding: '4%',
+        paddingHorizontal: '4%',
+        paddingVertical: '0.5%',
         elevation: 10,
         borderRadius: 20,
         backgroundColor: 'white',
@@ -22,6 +23,7 @@ export default StyleSheet.create({
         color: 'black', 
         marginBottom: 20, 
         maxWidth: '80%', 
+        minHeight: 50,
         fontSize: normalizador.widthPercentageToDP('6%'), 
         fontFamily: 'Poppins_700Bold'
     },
@@ -73,10 +75,12 @@ export default StyleSheet.create({
         color: 'black'
     },
     txtDescricao: {
-        height: normalizador.heightPercentageToDP("21%"),
+        //height: normalizador.heightPercentageToDP("21%"),
+        minHeight: 50,
         borderWidth: 1,
         borderRadius: 20,
-        padding: 10
+        padding: 10,
+        marginBottom: 10
     },
     Btn1:{
         justifyContent: 'space-around',
