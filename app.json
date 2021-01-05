@@ -18,7 +18,7 @@
     ],
     "android":{
       "package": "com.uname.notation",
-      "versionCode": 2,
+      "versionCode": 3,
       "permissions": [],
       "icon": "./assets/icon.png",
       "adaptiveIcon": { 
