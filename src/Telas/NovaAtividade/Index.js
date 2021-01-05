@@ -9,7 +9,7 @@ import { useNavigation } from '@react-navigation/native';
 import schedulePushNotification from '../../Services/Notifications'
 import formatTime from '../../Recursos/Formatador';
 
-import BarraSuperior from '../../Recursos/BarraSuperior/Index'
+import BarraSuperior from '../../Recursos/BarraSuperior'
 
 function exibirToast(props) {
     ToastAndroid.showWithGravity(

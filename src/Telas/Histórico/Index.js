@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import BarraSuperior from '../../Recursos/BarraSuperior/Index';
+import BarraSuperior from '../../Recursos/BarraSuperior';
 import { View, FlatList, StatusBar } from "react-native";
 import ContainerAtividade from '../../Recursos/ContainerAtividade/Index';
 import Atividades from '../../Services/sqlite/Atividades';

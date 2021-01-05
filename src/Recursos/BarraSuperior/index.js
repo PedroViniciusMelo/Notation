@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { Text, View, TouchableOpacity } from "react-native";
-import Estilos from "./Styles";
+import Estilos from "./styles";
 import Barra from "../../../assets/Barra/Barra.svg";
 import {useNavigation} from "@react-navigation/native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";

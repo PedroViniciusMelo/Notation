@@ -8,7 +8,6 @@ import formatTime from '../Formatador';
 
 export default function Container(props){
 
-    //let concluida = props.obj.concluida === '1';
 
     //StackNavigator, usado no container para que quando ele seja clicado seja aberto o componente de visualizarTarefa
     const Navigation = useNavigation()
@@ -16,6 +15,9 @@ export default function Container(props){
         Navigation.navigate('VisualizarAtividade', props.obj)
     }
 
+    /****************************************************************************************************************************************************************
+     *   Opções para serem exibidas juntamente com a data
+     ****************************************************************************************************************************************************************/
     const textoConcluida = <Text style={Estilos.textoData2}>Atividade concluida em </Text>;
 
     const iconeCalendario = (<Feather
@@ -32,6 +34,9 @@ export default function Container(props){
                                 color='red'
                                 />
                         </View> 
+    /****************************************************************************************************************************************************************
+     *   Tratamento do status da tarefa
+     ****************************************************************************************************************************************************************/
 
     const statusDaTarefa = () =>{
         
@@ -44,6 +49,9 @@ export default function Container(props){
             return iconeCalendario;
         }
     }
+    /****************************************************************************************************************************************************************
+     *   Retorno
+     ****************************************************************************************************************************************************************/
 
     return(
         <TouchableOpacity

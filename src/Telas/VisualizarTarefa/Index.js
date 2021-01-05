@@ -10,7 +10,7 @@ import * as Notifications from 'expo-notifications';
 import formatTime from '../../Recursos/Formatador';
 import schedulePushNotification from '../../Services/Notifications'
 
-import BarraSuperior from '../../Recursos/BarraSuperior/Index'
+import BarraSuperior from '../../Recursos/BarraSuperior'
 
 function exibirToast(props) {
     ToastAndroid.showWithGravity(

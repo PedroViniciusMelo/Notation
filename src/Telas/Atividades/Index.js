@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import BarraSuperior from '../../Recursos/BarraSuperior/Index';
+import BarraSuperior from '../../Recursos/BarraSuperior';
 import { View, TouchableOpacity, FlatList, StatusBar } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import ContainerAtividade from '../../Recursos/ContainerAtividade/Index';
