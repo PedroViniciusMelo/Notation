@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import BarraSuperior from '../../Recursos/BarraSuperior';
 import { View, FlatList, StatusBar } from "react-native";
-import ContainerAtividade from '../../Recursos/ContainerAtividade/Index';
+import ContainerAtividade from '../../Recursos/ContainerAtividade';
 import Atividades from '../../Services/sqlite/Atividades';
 import { useNavigation, DrawerActions } from '@react-navigation/native';
 import Estilos from './styles'

@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { Feather } from "@expo/vector-icons";
 import normalizador from "../normalizador";
-import Estilos from './Styles';
+import Estilos from './styles';
 import { useNavigation } from '@react-navigation/native';
 import formatTime from '../Formatador';
 

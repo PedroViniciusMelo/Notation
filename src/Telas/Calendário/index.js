@@ -3,7 +3,7 @@ import { Agenda } from "react-native-calendars";
 import { View, StatusBar } from "react-native";
 import BarraSuperior from '../../Recursos/BarraSuperior';
 import Atividades from "../../Services/sqlite/Atividades";
-import ContainerAtividades from '../../Recursos/ContainerAtividade/Index';
+import ContainerAtividades from '../../Recursos/ContainerAtividade';
 import { useNavigation, DrawerActions } from '@react-navigation/native';
 import formatTime from '../../Recursos/Formatador';
 import filtros from '../../Recursos/Filtros';
