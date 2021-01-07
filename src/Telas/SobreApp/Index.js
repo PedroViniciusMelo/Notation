@@ -2,7 +2,7 @@ import React from 'react';
 import { View, FlatList, Text, StatusBar, Image } from "react-native";
 import Estilos from './Styles';
 import BarraSuperior from '../../Recursos/BarraSuperior';
-import Logo from "../../Recursos/Logo/Index";
+import Logo from "../../Recursos/Logo";
 import { useNavigation, DrawerActions } from '@react-navigation/native';
 import normalizador from '../../Recursos/normalizador';
 
