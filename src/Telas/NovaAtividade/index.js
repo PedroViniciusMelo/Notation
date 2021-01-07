@@ -1,6 +1,6 @@
 import React, { useState} from 'react';
 import { View, Text, TextInput, TouchableOpacity, Switch, ScrollView, StatusBar, Platform, ToastAndroid } from "react-native";
-import Estilos from './Styles';
+import Estilos from './styles';
 import Atividades from '../../Services/sqlite/Atividades';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Feather } from '@expo/vector-icons';

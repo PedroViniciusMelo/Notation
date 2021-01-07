@@ -8,13 +8,13 @@ import { getFocusedRouteNameFromRoute } from '@react-navigation/native'
 import CustomDrawer from './Recursos/CustomDrawer'
 
 //Telas do Drawer
-import Calendario from './Telas/Calendário/Index'
-import Historico from './Telas/Histórico/Index'
+import Calendario from './Telas/Calendário'
+import Historico from './Telas/Histórico'
 import SobreApp from './Telas/SobreApp/Index'
 
 //Stack Navigator
-import NovaAtividade from './Telas/NovaAtividade/Index';
-import Atividades from './Telas/Atividades/Index';
+import NovaAtividade from './Telas/NovaAtividade';
+import Atividades from './Telas/Atividades';
 import VisualizarAtividade from './Telas/VisualizarTarefa/Index'
 
 export default function Rotas(){

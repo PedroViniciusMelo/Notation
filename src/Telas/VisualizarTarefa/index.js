@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, Text, TextInput, ScrollView, ToastAndroid } from 'react-native';
 import { Feather } from '@expo/vector-icons';
-import Estilos from './Style';
+import Estilos from './styles';
 import normalizador from "../../Recursos/normalizador";
 import { useNavigation } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker';
