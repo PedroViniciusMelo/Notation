@@ -10,12 +10,12 @@ import CustomDrawer from './Recursos/CustomDrawer'
 //Telas do Drawer
 import Calendario from './Telas/Calendário'
 import Historico from './Telas/Histórico'
-import SobreApp from './Telas/SobreApp/Index'
+import SobreApp from './Telas/SobreApp'
 
 //Stack Navigator
 import NovaAtividade from './Telas/NovaAtividade';
 import Atividades from './Telas/Atividades';
-import VisualizarAtividade from './Telas/VisualizarTarefa/Index'
+import VisualizarAtividade from './Telas/VisualizarTarefa'
 
 export default function Rotas(){
 
