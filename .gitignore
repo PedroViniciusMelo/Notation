@@ -1,5 +1,8 @@
 node_modules/**/*
 .expo/*
+.expo-shared
+.idea
+.vscode
 npm-debug.*
 *.jks
 *.p8
