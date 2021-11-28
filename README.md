@@ -1,11 +1,10 @@
 # Notation
-<div style="display: flex">
-<div style="padding-right: 20px; width: 100px; height: 100px">
 
-![Logo Notation](https://github.com/PedroViniciusMelo/Notation/blob/main/assets/icon.png)
-</div>
+<img width="200px" height="200px" src="https://github.com/PedroViniciusMelo/Notation/blob/main/assets/icon.png">
+
+<span>
 Feito especificamente para te ajudar!
-</div>
+</span>
 
 ## Funcionalidades
 Mantenha-se em dia com seus compromissos de uma forma fácil com a ajuda do Notation.
